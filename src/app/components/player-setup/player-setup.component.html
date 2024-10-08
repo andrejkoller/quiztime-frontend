@@ -1,0 +1,43 @@
+<div class="flex flex-col justify-center gap-2 h-screen w-container">
+  <div class="flex flex-row items-center justify-between">
+    <div class="cursor-pointer">
+      <i
+        class="fa-solid fa-arrow-left text-primary text-2xl"
+        (click)="goBackToSettings()"
+      ></i>
+    </div>
+    <div>
+      <p class="text-primary font-ubuntu-bold">Player Setup</p>
+    </div>
+  </div>
+  <mat-card class="flex flex-row items-center justify-between h-3/5">
+    <mat-card-content>
+      <div class="mb-8">
+        <p class="font-ubuntu-bold text-center">Give your players a name!</p>
+      </div>
+      <form (ngSubmit)="startGame()">
+        <div class="flex flex-col justify-between gap-4 h-full">
+          <div class="flex flex-row items-center gap-4">
+            <div><p class="font-ubuntu-bold">Name:</p></div>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              ngModel
+              required="true"
+              class="border-theme border-2 rounded-md"
+            />
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+    <div class="flex justify-center items-end w-full mb-4">
+      <button
+        type="submit"
+        class="font-ubuntu-bold rounded-xl border-theme border-2 w-3/5 h-10"
+      >
+        Play
+      </button>
+    </div>
+  </mat-card>
+</div>

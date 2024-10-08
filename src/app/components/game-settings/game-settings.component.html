@@ -1,0 +1,59 @@
+<div class="flex flex-col justify-start gap-2 h-screen w-container">
+  <div class="flex flex-row items-start justify-between mt-32 h-full">
+    <div class="flex flex-row items-center justify-between w-full">
+      <div>
+        @if (stepIndex > 0) {
+        <i
+          class="fa-solid fa-arrow-left text-primary text-2xl"
+          (click)="prevStep()"
+        ></i>
+        }
+      </div>
+      <div class="flex flex-row justify-center w-full">
+        <p class="text-primary font-ubuntu-bold">New Game</p>
+      </div>
+      <div class="cursor-pointer">
+        <i
+          class="fa-solid fa-xmark text-primary text-2xl"
+          (click)="goBackToHome()"
+        ></i>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col items-center justify-center h-full w-full">
+    <ng-container *ngIf="stepIndex === 0">
+      <app-player-count
+        class="flex items-center h-full w-full"
+      ></app-player-count>
+    </ng-container>
+    <ng-container *ngIf="stepIndex === 1"
+      ><app-difficulty-selection class="w-full"></app-difficulty-selection
+    ></ng-container>
+    <ng-container *ngIf="stepIndex === 2"
+      ><app-player-lives class="w-full"></app-player-lives
+    ></ng-container>
+    <ng-container *ngIf="stepIndex === 3"
+      ><app-rounds-count class="w-full"></app-rounds-count
+    ></ng-container>
+    <ng-container *ngIf="stepIndex === 4"
+      ><app-player-names-input class="w-full"></app-player-names-input
+    ></ng-container>
+  </div>
+  <div class="flex flex-row justify-center items-end mb-32 h-full w-full">
+    @if (stepIndex < 4) {
+    <button
+      (click)="nextStep()"
+      class="bg-primary font-ubuntu-bold rounded-xl w-full h-14"
+    >
+      Continue
+    </button>
+    } @else {
+    <button
+      (click)="nextStep()"
+      class="bg-button font-ubuntu-bold rounded-xl w-full h-14"
+    >
+      Join (5)
+    </button>
+    }
+  </div>
+</div>
