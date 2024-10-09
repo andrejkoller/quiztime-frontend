@@ -23,4 +23,3 @@
     The project demonstrates a dynamic and responsive UI, incorporating modern web technologies to create an engaging user experience. The app fetches quiz questions from an API and allows users to test their knowledge across various topics.
   </p>
 </div>
-![Screenshot (153)](https://github.com/user-attachments/assets/0b545877-61af-4ce3-98b4-2b79a0fe8df2)
