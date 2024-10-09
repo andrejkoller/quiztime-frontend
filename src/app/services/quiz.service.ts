@@ -14,20 +14,25 @@ export class QuizService {
 
   fetchQuestions() {
     this.http
-      .get(
-        'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean'
+      .get<any>(
+        'https://opentdb.com/api.php?amount=20&category=9&difficulty=easy&type=boolean'
       )
-      .subscribe(
-        (response: any) => {
-          this.questions = response.results;
-        },
-        (error: any) => {
-          const errorMessage =
-            'Failed to fetch trivia questions. Please try again later.';
-          this.toastr.error(errorMessage);
-          console.log(error);
-        }
-      );
+      .subscribe((response) => {
+        this.questions = response.results.map((q: any) => {
+          return {
+            question: q.question,
+            answers: this.shuffleAnswers([
+              ...q.incorrect_answers,
+              q.correct_answer,
+            ]),
+            correctAnswer: q.correct_answer,
+          };
+        });
+      });
+  }
+
+  shuffleAnswers(answers: string[]): string[] {
+    return answers.sort(() => Math.random() - 0.5);
   }
 
   nextQuestion() {

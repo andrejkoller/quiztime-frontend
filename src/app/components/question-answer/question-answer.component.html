@@ -1,0 +1,32 @@
+<div class="flex flex-col">
+  <div
+    *ngIf="this.quizService.questions.length > 0"
+    class="flex flex-col gap-4"
+  >
+    <div>
+      <p class="text-accent text-center">
+        Question {{ this.quizService.currentQuestionIndex }} out of
+        {{ this.quizService.questions.length }}
+      </p>
+    </div>
+    <p
+      class="text-primary text-center font-ubuntu-bold text-2xl"
+      [innerHTML]="
+        this.quizService.questions[this.quizService.currentQuestionIndex]
+          .question
+      "
+    ></p>
+  </div>
+  <div class="flex flex-col gap-4 justify-end w-full">
+    <button
+      class="font-ubuntu-bold bg-primary rounded-xl text-center h-14 w-full"
+      (click)="checkAnswers(answer)"
+      *ngFor="
+        let answer of quizService.questions[quizService.currentQuestionIndex]
+          .answers
+      "
+    >
+      {{ answer }}
+    </button>
+  </div>
+</div>

@@ -9,9 +9,27 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
+  maxTime = 100;
+  timeLeft = 100;
+
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+  }
+
+  startTimer() {
+    const totalTime = 100;
+    const interval = 1000;
+    const decrement = 100 / totalTime;
+
+    const timer = setInterval(() => {
+      this.timeLeft -= decrement;
+      if (this.timeLeft <= 0) {
+        clearInterval(timer);
+        this.timeLeft = 0;
+      }
+    }, interval);
+  }
 
   exitGame() {
     this.router.navigate(['/']);

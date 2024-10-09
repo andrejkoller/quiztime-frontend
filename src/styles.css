@@ -42,6 +42,24 @@ h1 {
   margin: 0 !important;
 }
 
+.mdc-slider__thumb-knob {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 9px !important;
+}
+
+.mdc-slider__track {
+  height: 6px !important;
+}
+
+.mdc-slider__track--inactive {
+  height: 6px !important;
+}
+
+.mdc-slider__track--active {
+  height: 6px !important;
+}
+
 /* Toastr */
 /* position */
 .toast-center-center {
