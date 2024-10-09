@@ -8,6 +8,7 @@ import { DifficultySelectionComponent } from './difficulty-selection/difficulty-
 import { PlayerLivesComponent } from './player-lives/player-lives.component';
 import { RoundsCountComponent } from './rounds-count/rounds-count.component';
 import { PlayerNamesInputComponent } from './player-names-input/player-names-input.component';
+import { CategorySelectionComponent } from './category-selection/category-selection.component';
 
 @Component({
   selector: 'app-game-settings',
@@ -25,6 +26,7 @@ import { PlayerNamesInputComponent } from './player-names-input/player-names-inp
     PlayerLivesComponent,
     RoundsCountComponent,
     PlayerNamesInputComponent,
+    CategorySelectionComponent,
   ],
   templateUrl: './game-settings.component.html',
   styleUrl: './game-settings.component.css',
@@ -46,5 +48,9 @@ export class GameSettingsComponent implements OnInit {
 
   prevStep() {
     this.stepIndex--;
+  }
+
+  startGame() {
+    this.router.navigate(['/playground']);
   }
 }

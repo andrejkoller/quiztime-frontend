@@ -1,16 +1,17 @@
-<div class="flex flex-row justify-between items-center">
-  <div (click)="exitGame()">
-    <i class="fa-solid fa-xmark text-primary text-2xl cursor-pointer"></i>
-  </div>
-  <div class="flex flex-row items-center">
-    <div class="time-bar-container">
-      <div class="time-bar"></div>
-    </div>
-  </div>
-  <div class="flex flex-row items-center gap-4">
-    <div><i class="fa-solid fa-heart text-primary text-2xl"></i></div>
-    <div>
-      <p class="font-ubuntu-bold text-primary">5</p>
+<div class="flex flex-col justify-start gap-2 h-screen w-container">
+  <div class="flex flex-row items-start justify-between mt-36 h-full">
+    <div class="flex flex-row items-center justify-between w-full">
+      <div class="flex flex-row justify-center w-full">
+        <p class="text-primary font-ubuntu-bold uppercase">History</p>
+      </div>
+      <div
+        class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl"
+      >
+        <i
+          class="flex justify-center fa-solid fa-xmark text-theme text-2xl"
+          (click)="goBackToHome()"
+        ></i>
+      </div>
     </div>
   </div>
 </div>

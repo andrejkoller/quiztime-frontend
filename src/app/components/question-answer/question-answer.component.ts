@@ -11,8 +11,6 @@ import { MatCard, MatCardContent } from '@angular/material/card';
   styleUrl: './question-answer.component.css',
 })
 export class QuestionAnswerComponent implements OnInit {
-  errorMessage: string = '';
-
   constructor(protected quizService: QuizService) {}
 
   ngOnInit(): void {
