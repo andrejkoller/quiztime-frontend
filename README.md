@@ -5,6 +5,9 @@
   <div>
     <img src="https://github.com/user-attachments/assets/a1e70b5e-edd3-411b-addf-0e8e24a89bbc">
   </div>
+  <div>
+    <img src="https://github.com/user-attachments/assets/1491617c-cab8-4a5f-a0b9-e208a4eec137">
+  </div>
 </div>
 <div align="left">
   <h3>ABOUT THIS PROJECT</h3>
