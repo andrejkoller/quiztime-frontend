@@ -1,19 +1,22 @@
 <div class="flex flex-col justify-center items-center gap-16 h-full w-full">
   <div>
-    <p class="font-ubuntu-bold text-4xl text-center text-primary leading-relaxed">
+    <p
+      class="font-ubuntu-bold text-4xl text-center text-primary leading-relaxed"
+    >
       How many of you want to play?
     </p>
   </div>
   <div class="flex flex-row justify-center items-center w-full">
-    <mat-slider
-      class="flex flex-row w-full"
-      min="0"
-      max="10"
-      step="1"
-      showTickMarks
-      discrete
-    >
-      <input class="flex flex-row w-full" matSliderThumb />
-    </mat-slider>
+    <div class="flex flex-row items-center gap-4">
+      <div><input class="rounded-lg h-24 w-24 text-4xl" /></div>
+      <div class="flex flex-col gap-4 h-full">
+        <button class="bg-primary rounded-xl h-12 w-12 text-theme text-2xl">
+          <i class="fa-solid fa-caret-up"></i>
+        </button>
+        <button class="bg-primary rounded-xl h-12 w-12 text-theme text-2xl">
+          <i class="fa-solid fa-caret-down"></i>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

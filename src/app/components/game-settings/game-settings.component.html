@@ -19,7 +19,7 @@
           (click)="goBackToHome()"
         ></i>
       </div>
-      } @if (stepIndex <= 3) {
+      } @if (stepIndex <= 4) {
       <div class="flex flex-row justify-center w-full">
         <p class="text-primary font-ubuntu-bold uppercase">New Game</p>
       </div>
@@ -56,10 +56,12 @@
       ><app-player-lives class="w-full"></app-player-lives
     ></ng-container>
     <ng-container *ngIf="stepIndex === 4"
-      ><app-rounds-count class="w-full"></app-rounds-count
+      ><app-rounds-count
+        class="flex items-center h-full w-full"
+      ></app-rounds-count
     ></ng-container>
     <ng-container *ngIf="stepIndex === 5"
-      ><app-player-names-input class="w-3/6"></app-player-names-input
+      ><app-player-names-input class="w-full"></app-player-names-input
     ></ng-container>
   </div>
   <div class="flex flex-row justify-center items-end mb-24 h-1/4 w-full">

@@ -1,0 +1,9 @@
+.mat-mdc-slider {
+  width: 100% !important;
+}
+
+.mdc-slider__thumb-knob {
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 0.75rem !important;
+}
