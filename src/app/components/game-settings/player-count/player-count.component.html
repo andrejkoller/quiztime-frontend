@@ -6,17 +6,32 @@
       How many of you want to play?
     </p>
   </div>
-  <div class="flex flex-row justify-center items-center w-full">
-    <div class="flex flex-row items-center gap-4">
-      <div><input class="rounded-lg h-24 w-24 text-4xl" /></div>
-      <div class="flex flex-col gap-4 h-full">
-        <button class="bg-primary rounded-xl h-12 w-12 text-theme text-2xl">
-          <i class="fa-solid fa-caret-up"></i>
-        </button>
-        <button class="bg-primary rounded-xl h-12 w-12 text-theme text-2xl">
-          <i class="fa-solid fa-caret-down"></i>
-        </button>
+  <form>
+    <div class="flex flex-row justify-center items-center w-full">
+      <div class="flex flex-row items-center gap-4">
+        <div>
+          <input
+            id="playerCapacity"
+            [formControl]="playerCapacity"
+            min="1"
+            class="rounded-lg h-24 w-24 text-4xl"
+          />
+        </div>
+        <div class="flex flex-col gap-4 h-full">
+          <button
+            (click)="incrementPlayerCapacity()"
+            class="bg-primary rounded-xl h-12 w-12 text-theme text-2xl"
+          >
+            <i class="fa-solid fa-caret-up"></i>
+          </button>
+          <button
+            (click)="decrementPlayerCapacity()"
+            class="bg-primary rounded-xl h-12 w-12 text-theme text-2xl"
+          >
+            <i class="fa-solid fa-caret-down"></i>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 </div>

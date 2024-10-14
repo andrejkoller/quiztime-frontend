@@ -8,3 +8,8 @@
     width: 90vw;
   }
 }
+
+button:disabled {
+  background-color: transparent;
+  color: #ffffff;
+}

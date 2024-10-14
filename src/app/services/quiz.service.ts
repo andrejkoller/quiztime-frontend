@@ -8,6 +8,15 @@ import { catchError, map, of } from 'rxjs';
   providedIn: 'root',
 })
 export class QuizService {
+  historyQuizApi =
+    'https://opentdb.com/api.php?amount=20&category=23&difficulty=easy&type=multiple';
+  bookQuizApi =
+    'https://opentdb.com/api.php?amount=20&category=10&difficulty=easy&type=multiple';
+  artQuizApi =
+    'https://opentdb.com/api.php?amount=20&category=25&difficulty=easy&type=multiple';
+  musicQuizApi =
+    'https://opentdb.com/api.php?amount=20&category=12&difficulty=easy&type=multiple';
+
   questions: any[] = [];
   answers: any[] = [];
   currentQuestionIndex: number = 1;
@@ -16,9 +25,7 @@ export class QuizService {
 
   fetchQuestions() {
     this.http
-      .get<{ results: any[] }>(
-        'https://opentdb.com/api.php?amount=20&category=23&difficulty=easy&type=boolean'
-      )
+      .get<{ results: any[] }>(this.bookQuizApi)
       .pipe(
         map((response: { results: any[] }) => response.results),
         catchError((error) => {
@@ -37,19 +44,9 @@ export class QuizService {
           correctAnswer: q.correct_answer,
         }));
       });
-
-    console.log(this.questions);
   }
 
   shuffleAnswers(answers: string[]): string[] {
     return answers.sort(() => Math.random() - 0.5);
-  }
-
-  nextQuestion() {
-    if (this.currentQuestionIndex < this.questions.length - 1) {
-      this.currentQuestionIndex++;
-    } else {
-      alert('Quiz completed!');
-    }
   }
 }

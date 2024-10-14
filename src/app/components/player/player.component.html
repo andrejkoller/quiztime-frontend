@@ -1,7 +1,20 @@
-<div class="flex flex-col items-center">
-  <mat-card class="flex flex-row justify-start items-center h-full w-full">
-    <div class="grid grid-cols-2 justify-center items-center h-full w-full">
-      
-    </div>
+<div class="flex flex-row items-center gap-4">
+  <mat-card
+    *ngFor="let player of players"
+    class="flex flex-row justify-center items-center h-full w-full rounded-full"
+  >
+    <mat-card-content>
+      <div class="flex flex-col">
+        <div>
+          <i class="fa-solid fa-heart">{{ player.lives }}</i>
+        </div>
+        <div>
+          <p class="font-ubuntu-bold">{{ player.name }}</p>
+        </div>
+        <div>
+          <p class="font-ubuntu-bold">{{ player.points }}</p>
+        </div>
+      </div>
+    </mat-card-content>
   </mat-card>
 </div>

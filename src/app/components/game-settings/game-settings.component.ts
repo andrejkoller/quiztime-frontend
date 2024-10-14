@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { Router, RouterLink } from '@angular/router';
 import { NgFor, NgForOf, NgIf } from '@angular/common';
@@ -9,6 +9,8 @@ import { PlayerLivesComponent } from './player-lives/player-lives.component';
 import { RoundsCountComponent } from './rounds-count/rounds-count.component';
 import { PlayerNamesInputComponent } from './player-names-input/player-names-input.component';
 import { CategorySelectionComponent } from './category-selection/category-selection.component';
+import { GameSettingsService } from '../../services/game-settings.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-game-settings',
@@ -31,18 +33,31 @@ import { CategorySelectionComponent } from './category-selection/category-select
   templateUrl: './game-settings.component.html',
   styleUrl: './game-settings.component.css',
 })
-export class GameSettingsComponent implements OnInit {
+export class GameSettingsComponent implements OnInit, OnDestroy {
+  playerCapacity: number | undefined;
+  private subscription: Subscription = new Subscription();
+
   stepIndex: number = 0;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private gameSettingsService: GameSettingsService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subscription = this.gameSettingsService.playerCapacity$.subscribe(
+      (capacity) => {
+        this.playerCapacity = capacity;
+      }
+    );
+  }
 
   goBackToHome() {
     this.router.navigate(['/']);
   }
 
   nextStep() {
+    console.log('Players: ', this.playerCapacity);
     this.stepIndex++;
   }
 
@@ -52,5 +67,11 @@ export class GameSettingsComponent implements OnInit {
 
   startGame() {
     this.router.navigate(['/playground']);
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

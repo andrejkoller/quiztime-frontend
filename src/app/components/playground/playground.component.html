@@ -1,15 +1,19 @@
-<div class="flex flex-col justify-start gap-12 h-screen w-container">
+<div class="flex flex-col justify-start gap-4 h-screen w-container">
   <div>
     <app-header></app-header>
   </div>
-  <div>
+  <div class="flex flex-row items-center justify-center h-full w-full">
     <app-player></app-player>
   </div>
-  <div class="flex flex-col items-center justify-center h-full w-full mb-16">
+  <div class="flex flex-col items-center justify-center h-full w-full">
     <app-question-answer></app-question-answer>
   </div>
-  <div class="flex flex-row justify-center items-end mb-36 h-full w-full">
-    <button class="bg-button font-ubuntu-bold rounded-xl w-full h-14">
+  <div class="flex flex-row justify-center items-end mb-8 h-full w-full">
+    <button
+      [disabled]="this.quizService.answers === undefined"
+      class="bg-button border border-button font-ubuntu-bold rounded-xl w-full h-14"
+      (click)="checkAnswers(answer)"
+    >
       Next
     </button>
   </div>
