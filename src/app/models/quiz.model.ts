@@ -1,21 +1,21 @@
 export class Quiz {
   id: number | undefined;
   name: string | undefined;
-  category: Quiz_Category | undefined;
-  difficulty: Quiz_Difficulty | undefined;
+  category: QuizCategory | undefined;
+  difficulty: QuizDifficulty | undefined;
   playerCapacity: number | undefined;
 }
 
-export enum Quiz_Category {
-  general_knowledge = 'general_knowledge',
-  history = 'history',
-  art = 'art',
-  music = 'music',
-  book = 'book',
+export enum QuizCategory {
+  GeneralKnowledge = 'GeneralKnowledge',
+  History = 'History',
+  Art = 'Art',
+  Music = 'Music',
+  Book = 'Book',
 }
 
-export enum Quiz_Difficulty {
-  easy = 'easy',
-  medium = 'medium',
-  hard = 'hard',
+export enum QuizDifficulty {
+  Easy = 'Easy',
+  Medium = 'Medium',
+  Hard = 'Hard',
 }

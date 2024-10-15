@@ -11,6 +11,7 @@ import { PlayerNamesInputComponent } from './player-names-input/player-names-inp
 import { CategorySelectionComponent } from './category-selection/category-selection.component';
 import { GameSettingsService } from '../../services/game-settings.service';
 import { Subscription } from 'rxjs';
+import { QuizCategory, QuizDifficulty } from '../../models/quiz.model';
 
 @Component({
   selector: 'app-game-settings',
@@ -35,7 +36,12 @@ import { Subscription } from 'rxjs';
 })
 export class GameSettingsComponent implements OnInit, OnDestroy {
   playerCapacity: number | undefined;
+  quizCategory: QuizCategory | null = QuizCategory.Art;
+  quizDifficulty: QuizDifficulty | null = QuizDifficulty.Easy;
+
   private subscription: Subscription = new Subscription();
+  private categorySubscription: Subscription = new Subscription();
+  private difficultySubscription: Subscription = new Subscription();
 
   stepIndex: number = 0;
 
@@ -50,6 +56,18 @@ export class GameSettingsComponent implements OnInit, OnDestroy {
         this.playerCapacity = capacity;
       }
     );
+
+    this.categorySubscription =
+      this.gameSettingsService.quizCategorySubject$.subscribe((category) => {
+        this.quizCategory = category;
+      });
+
+    this.difficultySubscription =
+      this.gameSettingsService.quizDifficultySubject$.subscribe(
+        (difficulty) => {
+          this.quizDifficulty = difficulty;
+        }
+      );
   }
 
   goBackToHome() {
@@ -57,7 +75,6 @@ export class GameSettingsComponent implements OnInit, OnDestroy {
   }
 
   nextStep() {
-    console.log('Players: ', this.playerCapacity);
     this.stepIndex++;
   }
 
@@ -70,8 +87,8 @@ export class GameSettingsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
+    this.categorySubscription.unsubscribe();
+    this.difficultySubscription.unsubscribe();
   }
 }

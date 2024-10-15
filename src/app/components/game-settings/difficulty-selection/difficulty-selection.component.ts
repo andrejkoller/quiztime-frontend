@@ -1,20 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { Quiz_Difficulty } from '../../../models/quiz.model';
+import { QuizDifficulty } from '../../../models/quiz.model';
+import { NgClass } from '@angular/common';
+import { GameSettingsService } from '../../../services/game-settings.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-difficulty-selection',
   standalone: true,
-  imports: [MatCard, MatCardContent],
+  imports: [MatCard, MatCardContent, NgClass],
   templateUrl: './difficulty-selection.component.html',
   styleUrl: './difficulty-selection.component.css',
 })
 export class DifficultySelectionComponent implements OnInit {
-  quizDifficultyTypes = Object.values(Quiz_Difficulty).filter(
-    (value) => typeof value === 'string'
-  );
+  difficultyControl = new FormControl<QuizDifficulty | null>(null);
+  QuizDifficulty = QuizDifficulty;
 
-  constructor() {}
+  constructor(private gameSettingsService: GameSettingsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.difficultyControl.valueChanges.subscribe((difficulty) => {
+      if (difficulty !== null) {
+        this.gameSettingsService.setQuizDifficulty(difficulty);
+      }
+    });
+  }
+
+  selectDifficulty(difficulty: QuizDifficulty) {
+    this.difficultyControl.setValue(difficulty);
+  }
 }

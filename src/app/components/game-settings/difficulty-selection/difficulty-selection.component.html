@@ -10,6 +10,10 @@
     <div class="flex w-full">
       <button
         class="bg-easy font-ubuntu-bold text-center rounded-xl h-14 w-full"
+        (click)="selectDifficulty(QuizDifficulty.Easy)"
+        [ngClass]="{
+          'opacity-50': difficultyControl.value === QuizDifficulty.Easy
+        }"
       >
         Easy
       </button>
@@ -17,6 +21,10 @@
     <div class="flex w-full">
       <button
         class="bg-medium font-ubuntu-bold text-center rounded-xl h-14 w-full"
+        (click)="selectDifficulty(QuizDifficulty.Medium)"
+        [ngClass]="{
+          'opacity-50': difficultyControl.value === QuizDifficulty.Medium
+        }"
       >
         Medium
       </button>
@@ -24,6 +32,10 @@
     <div class="flex w-full">
       <button
         class="bg-hard font-ubuntu-bold text-center rounded-xl h-14 w-full"
+        (click)="selectDifficulty(QuizDifficulty.Hard)"
+        [ngClass]="{
+          'opacity-50': difficultyControl.value === QuizDifficulty.Hard
+        }"
       >
         Hard
       </button>

@@ -23,10 +23,6 @@ export class PlayerCountComponent implements OnInit, OnDestroy {
     });
   }
 
-  getPlayerCapacity(): number {
-    return this.playerCapacity.value || 1;
-  }
-
   incrementPlayerCapacity() {
     var currentValue = this.playerCapacity.value || 1;
     this.playerCapacity.setValue(currentValue + 1);
@@ -37,10 +33,6 @@ export class PlayerCountComponent implements OnInit, OnDestroy {
     if (currentValue > 1) {
       this.playerCapacity.setValue(currentValue - 1);
     }
-  }
-
-  onContinue() {
-    this.gameSettingsService.setPlayerCapacity(this.playerCapacity.value || 1);
   }
 
   ngOnDestroy(): void {

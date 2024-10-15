@@ -8,14 +8,7 @@ import { catchError, map, of } from 'rxjs';
   providedIn: 'root',
 })
 export class QuizService {
-  historyQuizApi =
-    'https://opentdb.com/api.php?amount=20&category=23&difficulty=easy&type=multiple';
-  bookQuizApi =
-    'https://opentdb.com/api.php?amount=20&category=10&difficulty=easy&type=multiple';
-  artQuizApi =
-    'https://opentdb.com/api.php?amount=20&category=25&difficulty=easy&type=multiple';
-  musicQuizApi =
-    'https://opentdb.com/api.php?amount=20&category=12&difficulty=easy&type=multiple';
+  apiURL = 'https://opentdb.com/api.php?amount=20';
 
   questions: any[] = [];
   answers: any[] = [];
@@ -25,7 +18,7 @@ export class QuizService {
 
   fetchQuestions() {
     this.http
-      .get<{ results: any[] }>(this.bookQuizApi)
+      .get<{ results: any[] }>(this.apiURL)
       .pipe(
         map((response: { results: any[] }) => response.results),
         catchError((error) => {
