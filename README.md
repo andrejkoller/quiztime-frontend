@@ -20,6 +20,9 @@
   <div>
     <img src="https://github.com/user-attachments/assets/afa5fd7d-36ec-4359-893d-7a3ed4cc8aee">
   </div>
+  <div>
+    <img src="https://github.com/user-attachments/assets/34fa4ce2-1eef-46b9-a5ac-d3e57857d10b">
+  </div>
 </div>
 <div align="left">
   <h3>ABOUT THIS PROJECT</h3>
