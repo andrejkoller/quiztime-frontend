@@ -1,14 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GameSettingsService } from '../../../services/game-settings.service';
-import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { QuizCategory } from '../../../models/quiz.model';
 import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-category-selection',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, ReactiveFormsModule],
   templateUrl: './category-selection.component.html',
   styleUrl: './category-selection.component.css',
 })
@@ -16,7 +15,7 @@ export class CategorySelectionComponent implements OnInit {
   categoryControl = new FormControl<QuizCategory | null>(null);
   QuizCategory = QuizCategory;
 
-  constructor(private gameSettingsService: GameSettingsService) {}
+  constructor(protected gameSettingsService: GameSettingsService) {}
 
   ngOnInit(): void {
     this.categoryControl.valueChanges.subscribe((category) => {

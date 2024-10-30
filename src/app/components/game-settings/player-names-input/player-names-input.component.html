@@ -1,8 +1,16 @@
-<div class="flex flex-col items-center justify-center gap-4 h-full w-full">
-  <div class="flex flex-row justify-center h-96 w-full">
+<div class="flex flex-col items-center justify-center gap-8 h-full w-full">
+  <div class="flex flex-col justify-center items-center h-full w-full">
     <input
-      class="flex flex-row justify-center outline-none text-white caret-white bg-theme font-ubuntu-bold text-6xl w-full"
-      placeholder="username :)"
+      class="text-center outline-none text-white caret-white bg-theme font-ubuntu-bold text-4xl w-full p-4 rounded-lg"
+      placeholder="Enter username :)"
     />
+  </div>
+  <div class="h-14 w-full mb-10">
+    <button
+      (click)="this.gameSettingsService.startGame()"
+      class="bg-button font-ubuntu-bold rounded-xl h-full w-full hover:opacity-80 transition-opacity"
+    >
+      Join ({{ this.playerAmount }})
+    </button>
   </div>
 </div>

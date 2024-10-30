@@ -7,7 +7,7 @@ export class Quiz {
 }
 
 export enum QuizCategory {
-  GeneralKnowledge = 'GeneralKnowledge',
+  GeneralKnowledge = 'General',
   History = 'History',
   Art = 'Art',
   Music = 'Music',

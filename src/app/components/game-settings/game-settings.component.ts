@@ -36,18 +36,16 @@ import { QuizCategory, QuizDifficulty } from '../../models/quiz.model';
 })
 export class GameSettingsComponent implements OnInit, OnDestroy {
   playerCapacity: number | undefined;
-  quizCategory: QuizCategory | null = QuizCategory.Art;
+  quizCategory: QuizCategory | undefined = QuizCategory.GeneralKnowledge;
   quizDifficulty: QuizDifficulty | null = QuizDifficulty.Easy;
 
   private subscription: Subscription = new Subscription();
   private categorySubscription: Subscription = new Subscription();
   private difficultySubscription: Subscription = new Subscription();
 
-  stepIndex: number = 0;
-
   constructor(
     private router: Router,
-    private gameSettingsService: GameSettingsService
+    protected gameSettingsService: GameSettingsService
   ) {}
 
   ngOnInit(): void {
@@ -72,18 +70,6 @@ export class GameSettingsComponent implements OnInit, OnDestroy {
 
   goBackToHome() {
     this.router.navigate(['/']);
-  }
-
-  nextStep() {
-    this.stepIndex++;
-  }
-
-  prevStep() {
-    this.stepIndex--;
-  }
-
-  startGame() {
-    this.router.navigate(['/playground']);
   }
 
   ngOnDestroy(): void {

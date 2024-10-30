@@ -1,25 +1,25 @@
 <div class="flex flex-col justify-start gap-2 h-screen w-container">
   <div class="flex flex-row items-start justify-between mt-24 mb-8 h-1/4-">
     <div class="flex flex-row items-center justify-between w-full">
-      @if (stepIndex > 0) {
+      @if (this.gameSettingsService.stepIndex > 0) {
       <div
-        class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl"
+        class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl hover:opacity-50 transition-opacity"
       >
         <i
           class="fa-solid fa-arrow-left text-theme text-2xl"
-          (click)="prevStep()"
+          (click)="this.gameSettingsService.prevStep()"
         ></i>
       </div>
       } @else {
       <div
-        class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl"
+        class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl hover:opacity-50 transition-opacity"
       >
         <i
           class="fa-solid fa-arrow-left text-theme text-2xl"
           (click)="goBackToHome()"
         ></i>
       </div>
-      } @if (stepIndex <= 4) {
+      } @if (this.gameSettingsService.stepIndex <= 3) {
       <div class="flex flex-row justify-center w-full">
         <p class="text-primary font-ubuntu-bold uppercase">New Game</p>
       </div>
@@ -29,7 +29,7 @@
       </div>
       }
       <div
-        class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl"
+        class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl hover:opacity-50 transition-opacity"
       >
         <i
           class="flex justify-center fa-solid fa-xmark text-theme text-2xl"
@@ -39,46 +39,30 @@
     </div>
   </div>
   <div class="flex flex-col items-center justify-center h-full w-full">
-    <ng-container *ngIf="stepIndex === 0">
+    <ng-container *ngIf="this.gameSettingsService.stepIndex === 0">
       <app-player-count
-        class="flex items-center h-full w-full"
+        class="flex flex-row justify-center items-center h-full w-full"
       ></app-player-count>
     </ng-container>
-    <ng-container *ngIf="stepIndex === 1">
+    <ng-container *ngIf="this.gameSettingsService.stepIndex === 1">
       <app-category-selection
-        class="flex flex-row justify-center items-end h-full w-full"
+        class="flex flex-row justify-center items-center h-full w-full"
       ></app-category-selection>
     </ng-container>
-    <ng-container *ngIf="stepIndex === 2"
-      ><app-difficulty-selection class="w-full"></app-difficulty-selection
+    <ng-container *ngIf="this.gameSettingsService.stepIndex === 2"
+      ><app-difficulty-selection
+        class="flex flex-row justify-center items-center h-full w-full"
+      ></app-difficulty-selection
     ></ng-container>
-    <ng-container *ngIf="stepIndex === 3"
-      ><app-player-lives class="w-full"></app-player-lives
+    <ng-container *ngIf="this.gameSettingsService.stepIndex === 3"
+      ><app-player-lives
+        class="flex flex-row justify-center items-center h-full w-full"
+      ></app-player-lives
     ></ng-container>
-    <ng-container *ngIf="stepIndex === 4"
-      ><app-rounds-count
-        class="flex items-center h-full w-full"
-      ></app-rounds-count
+    <ng-container *ngIf="this.gameSettingsService.stepIndex === 4"
+      ><app-player-names-input
+        class="flex flex-row justify-center items-center h-full w-full"
+      ></app-player-names-input
     ></ng-container>
-    <ng-container *ngIf="stepIndex === 5"
-      ><app-player-names-input class="w-full"></app-player-names-input
-    ></ng-container>
-  </div>
-  <div class="flex flex-row justify-center items-end mb-24 h-1/4 w-full">
-    @if (stepIndex <= 4) {
-    <button
-      (click)="nextStep()"
-      class="bg-primary font-ubuntu-bold rounded-xl w-full h-14"
-    >
-      Continue
-    </button>
-    } @else {
-    <button
-      (click)="startGame()"
-      class="bg-button font-ubuntu-bold rounded-xl w-full h-14"
-    >
-      Join ({{ this.playerCapacity }})
-    </button>
-    }
   </div>
 </div>

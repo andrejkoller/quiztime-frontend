@@ -60,6 +60,11 @@ h1 {
   height: 6px !important;
 }
 
+::selection {
+  background-color: #40dee8;
+  color: #1c1a5d;
+}
+
 /* Toastr */
 /* position */
 .toast-center-center {

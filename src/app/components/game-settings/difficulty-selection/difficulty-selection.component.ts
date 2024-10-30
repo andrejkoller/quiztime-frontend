@@ -16,7 +16,7 @@ export class DifficultySelectionComponent implements OnInit {
   difficultyControl = new FormControl<QuizDifficulty | null>(null);
   QuizDifficulty = QuizDifficulty;
 
-  constructor(private gameSettingsService: GameSettingsService) {}
+  constructor(protected gameSettingsService: GameSettingsService) {}
 
   ngOnInit(): void {
     this.difficultyControl.valueChanges.subscribe((difficulty) => {

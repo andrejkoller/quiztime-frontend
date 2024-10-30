@@ -15,7 +15,7 @@ export class PlayerCountComponent implements OnInit, OnDestroy {
   playerCapacity = new FormControl(1);
   private subscription: Subscription | undefined;
 
-  constructor(private gameSettingsService: GameSettingsService) {}
+  constructor(protected gameSettingsService: GameSettingsService) {}
 
   ngOnInit(): void {
     this.subscription = this.playerCapacity.valueChanges.subscribe((value) => {
@@ -24,12 +24,12 @@ export class PlayerCountComponent implements OnInit, OnDestroy {
   }
 
   incrementPlayerCapacity() {
-    var currentValue = this.playerCapacity.value || 1;
+    const currentValue = this.playerCapacity.value || 1;
     this.playerCapacity.setValue(currentValue + 1);
   }
 
   decrementPlayerCapacity() {
-    var currentValue = this.playerCapacity.value || 1;
+    const currentValue = this.playerCapacity.value || 1;
     if (currentValue > 1) {
       this.playerCapacity.setValue(currentValue - 1);
     }

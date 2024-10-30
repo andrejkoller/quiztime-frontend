@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { QuizCategory, QuizDifficulty } from '../models/quiz.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameSettingsService {
+  constructor(private router: Router) {}
+  
+  playerCapacity: number | undefined;
+  stepIndex: number = 0;
+
   private playerCapacitySubject = new BehaviorSubject<number>(1);
   playerCapacity$ = this.playerCapacitySubject.asObservable();
 
-  private quizCategorySubject = new BehaviorSubject<QuizCategory | null>(null);
+  private quizCategorySubject = new BehaviorSubject<QuizCategory | undefined>(QuizCategory.GeneralKnowledge);
   quizCategorySubject$ = this.quizCategorySubject.asObservable();
 
   private quizDifficultySubject = new BehaviorSubject<QuizDifficulty | null>(
@@ -29,7 +35,7 @@ export class GameSettingsService {
     this.quizCategorySubject.next(category);
   }
 
-  getQuizCategory(): QuizCategory | null {
+  getQuizCategory(): QuizCategory | undefined {
     return this.quizCategorySubject.value;
   }
 
@@ -39,5 +45,17 @@ export class GameSettingsService {
 
   getQuizDifficulty(): QuizDifficulty | null {
     return this.quizDifficultySubject.value;
+  }
+
+  nextStep() {
+    this.stepIndex++;
+  }
+
+  prevStep() {
+    this.stepIndex--;
+  }
+
+  startGame() {
+    this.router.navigate(['/playground']);
   }
 }

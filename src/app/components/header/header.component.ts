@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GameSettingsService } from '../../services/game-settings.service';
+import { QuizCategory } from '../../models/quiz.model';
 
 @Component({
   selector: 'app-header',
@@ -9,29 +11,19 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
-  maxTime = 100;
-  timeLeft = 100;
+  quizCategory: QuizCategory | undefined;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    protected gameSettingsService: GameSettingsService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.quizCategory = this.gameSettingsService.getQuizCategory();
+  }
 
   goBackToHome() {
     this.router.navigate(['/']);
-  }
-
-  startTimer() {
-    const totalTime = 100;
-    const interval = 1000;
-    const decrement = 100 / totalTime;
-
-    const timer = setInterval(() => {
-      this.timeLeft -= decrement;
-      if (this.timeLeft <= 0) {
-        clearInterval(timer);
-        this.timeLeft = 0;
-      }
-    }, interval);
   }
 
   exitGame() {
