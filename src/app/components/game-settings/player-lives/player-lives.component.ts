@@ -19,7 +19,7 @@ export class PlayerLivesComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.playerLiveCapacity.valueChanges.subscribe(
       (value) => {
-        this.gameSettingsService.setPlayerCapacity(value ?? 1);
+        this.gameSettingsService.setPlayerLiveCapacity(value ?? 1);
       }
     );
   }

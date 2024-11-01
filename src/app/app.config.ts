@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     BrowserAnimationsModule,
     provideAnimations(),
-    provideToastr({ timeOut: 3500, positionClass: 'toast-bottom-right' }),
+    provideToastr({ timeOut: 1500, positionClass: 'toast-bottom-center' }),
     provideHttpClient(withFetch()),
   ],
 };

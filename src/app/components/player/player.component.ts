@@ -37,9 +37,7 @@ export class PlayerComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.players);
-  }
+  ngOnInit(): void {}
 
   getPlayerLives(): number {
     return this.playerLives;

@@ -35,13 +35,17 @@ import { QuizCategory, QuizDifficulty } from '../../models/quiz.model';
   styleUrl: './game-settings.component.css',
 })
 export class GameSettingsComponent implements OnInit, OnDestroy {
-  playerCapacity: number | undefined;
+  playerCapacity: number | undefined = 1;
   quizCategory: QuizCategory | undefined = QuizCategory.GeneralKnowledge;
-  quizDifficulty: QuizDifficulty | null = QuizDifficulty.Easy;
+  quizDifficulty: QuizDifficulty | undefined = QuizDifficulty.Easy;
+  playerLiveCapacity: number | undefined = 1;
+  questionCapacity: number | undefined = 1;
 
-  private subscription: Subscription = new Subscription();
+  private playerSubscription: Subscription = new Subscription();
   private categorySubscription: Subscription = new Subscription();
   private difficultySubscription: Subscription = new Subscription();
+  private playerLiveSubscription: Subscription = new Subscription();
+  private questionSubscription: Subscription = new Subscription();
 
   constructor(
     private router: Router,
@@ -49,11 +53,10 @@ export class GameSettingsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.gameSettingsService.playerCapacity$.subscribe(
-      (capacity) => {
+    this.playerSubscription =
+      this.gameSettingsService.playerCapacity$.subscribe((capacity) => {
         this.playerCapacity = capacity;
-      }
-    );
+      });
 
     this.categorySubscription =
       this.gameSettingsService.quizCategorySubject$.subscribe((category) => {
@@ -66,15 +69,29 @@ export class GameSettingsComponent implements OnInit, OnDestroy {
           this.quizDifficulty = difficulty;
         }
       );
+
+    this.playerLiveSubscription =
+      this.gameSettingsService.playerLiveCapacity$.subscribe((capacity) => {
+        this.playerLiveCapacity = capacity;
+      });
+
+    this.questionSubscription =
+      this.gameSettingsService.questionCapacity$.subscribe(
+        (question) => (this.questionCapacity = question)
+      );
   }
 
-  goBackToHome() {
-    this.router.navigate(['/']);
+  exitSettings() {
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.playerSubscription.unsubscribe();
     this.categorySubscription.unsubscribe();
     this.difficultySubscription.unsubscribe();
+    this.playerLiveSubscription.unsubscribe();
+    this.questionSubscription.unsubscribe();
   }
 }

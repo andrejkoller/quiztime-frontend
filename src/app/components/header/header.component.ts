@@ -27,6 +27,8 @@ export class HeaderComponent implements OnInit {
   }
 
   exitGame() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
   }
 }

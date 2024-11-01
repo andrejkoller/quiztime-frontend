@@ -10,7 +10,17 @@
     </div>
     <div class="flex flex-row items-center justify-between w-full">
       <div class="flex flex-row justify-center w-full">
-        <p class="text-primary font-ubuntu-bold uppercase">{{ this.quizCategory }}</p>
+        @switch (this.quizCategory) { @case (9) {
+        <p class="text-primary font-ubuntu-bold uppercase">General</p>
+        } @case (23) {
+        <p class="text-primary font-ubuntu-bold uppercase">History</p>
+        } @case (25) {
+        <p class="text-primary font-ubuntu-bold uppercase">Art</p>
+        } @case (12) {
+        <p class="text-primary font-ubuntu-bold uppercase">Music</p>
+        } @case (10) {
+        <p class="text-primary font-ubuntu-bold uppercase">Books</p>
+        } }
       </div>
       <div
         class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl hover:opacity-50"

@@ -25,28 +25,4 @@ export class PlaygroundComponent implements OnInit {
   constructor(protected quizService: QuizService) {}
 
   ngOnInit(): void {}
-
-  checkAnswers(selectedAnswer: string) {
-    const correctAnswer =
-      this.quizService.questions[this.quizService.currentQuestionIndex]
-        .correctAnswer;
-    if (selectedAnswer === correctAnswer) {
-      alert('Correct!');
-    } else {
-      alert('Wrong!');
-    }
-
-    this.nextQuestion();
-  }
-
-  nextQuestion() {
-    if (
-      this.quizService.currentQuestionIndex <
-      this.quizService.questions.length - 1
-    ) {
-      this.quizService.currentQuestionIndex++;
-    } else {
-      alert('Quiz completed!');
-    }
-  }
 }

@@ -7,15 +7,15 @@ export class Quiz {
 }
 
 export enum QuizCategory {
-  GeneralKnowledge = 'General',
-  History = 'History',
-  Art = 'Art',
-  Music = 'Music',
-  Book = 'Book',
+  GeneralKnowledge = 9,
+  History = 23,
+  Art = 25,
+  Music = 12,
+  Book = 10,
 }
 
 export enum QuizDifficulty {
-  Easy = 'Easy',
-  Medium = 'Medium',
-  Hard = 'Hard',
+  Easy = 'easy',
+  Medium = 'medium',
+  Hard = 'hard',
 }
