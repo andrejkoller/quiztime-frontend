@@ -7,8 +7,10 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { NgFor } from '@angular/common';
+import { Player } from '../../../models/player.model';
 
 @Component({
   selector: 'app-player-names-input',
@@ -18,37 +20,53 @@ import { NgFor } from '@angular/common';
   styleUrl: './player-names-input.component.css',
 })
 export class PlayerNamesInputComponent implements OnInit {
-  playerNamesForm: FormGroup;
-  playerCapacity: number = 1;
+  playerForm!: FormGroup;
+  players: Player[] = [];
+  playerCount: number | undefined;
+  playerLiveCount: number | undefined;
 
   constructor(
     protected gameSettingsService: GameSettingsService,
     private router: Router,
     private fb: FormBuilder
   ) {
-    this.playerNamesForm = this.fb.group({
-      playerNames: this.fb.array([] as FormControl[]),
-    });
+    this.playerCount = this.gameSettingsService.getPlayerCapacity();
+    this.playerLiveCount = this.gameSettingsService.getPlayerLiveCapacity();
   }
 
   ngOnInit(): void {
-    this.playerCapacity = this.gameSettingsService.getPlayerCapacity();
-    this.createPlayerNameFields();
+    this.initForm();
   }
 
-  get playerNames(): FormArray<FormControl> {
-    return this.playerNamesForm.get('playerNames') as FormArray;
+  private initForm() {
+    const playerCount = this.playerCount ?? 1;
+
+    this.playerForm = this.fb.group({
+      players: this.fb.array(
+        Array.from({ length: playerCount }, () =>
+          this.fb.group({
+            name: ['', Validators.required],
+            lives: [this.playerLiveCount],
+            points: [0],
+          })
+        )
+      ),
+    });
   }
 
-  createPlayerNameFields() {
-    for (let i = 0; i < this.playerCapacity; i++) {
-      this.playerNames.push(new FormControl(''));
-    }
+  get playerControls() {
+    return (this.playerForm.get('players') as FormArray).controls;
   }
 
   submitPlayerNames() {
-    const playerNames = this.playerNamesForm.value.playerNames;
-    this.gameSettingsService.setPlayerNames(playerNames);
+    this.players = this.playerForm.value.players.map((player: any) => ({
+      name: player.name,
+      lives: player.lives,
+      points: player.points,
+    }));
+
+    this.gameSettingsService.setPlayers(this.players);
+
     this.router.navigate(['/playground']);
   }
 }

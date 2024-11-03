@@ -8,9 +8,19 @@ import { Player } from '../models/player.model';
   providedIn: 'root',
 })
 export class GameSettingsService {
-  constructor(private router: Router) {}
+  playerAmount: number = 0;
+  selectedCategory: QuizCategory | undefined;
+  selectedDifficulty: QuizDifficulty | undefined;
+  playerLiveAmount: number = 0;
+  questionAmount: number = 0;
+  playerPointAmount: number = 0;
+
+  constructor() {}
 
   stepIndex: number = 0;
+
+  private playersSubject = new BehaviorSubject<Player[]>([]);
+  players$ = this.playersSubject.asObservable();
 
   private playerCapacitySubject = new BehaviorSubject<number>(1);
   playerCapacity$ = this.playerCapacitySubject.asObservable();
@@ -33,6 +43,17 @@ export class GameSettingsService {
 
   private playerSubject = new BehaviorSubject<string>('');
   player$ = this.playerSubject.asObservable();
+
+  private playerPointCapacitySubject = new BehaviorSubject<number>(0);
+  playerPointCapacity$ = this.playerPointCapacitySubject.asObservable();
+
+  setPlayers(players: Player[]) {
+    this.playersSubject.next(players);
+  }
+
+  getPlayers(): Player[] {
+    return this.playersSubject.getValue();
+  }
 
   /* Player Capacity */
   setPlayerCapacity(value: number) {
@@ -86,6 +107,15 @@ export class GameSettingsService {
 
   getPlayerNames(): string {
     return this.playerSubject.getValue();
+  }
+
+  /* Player Points */
+  setPlayerPoints(value: number) {
+    this.playerPointCapacitySubject.next(value);
+  }
+
+  getPlayerPoints(): number {
+    return this.playerPointCapacitySubject.getValue();
   }
 
   /* Game Control */

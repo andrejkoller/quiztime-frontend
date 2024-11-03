@@ -5,3 +5,13 @@ button:hover {
 .answers-section button.selected {
   background-color: #40dee8;
 }
+
+.correct-answer {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+.incorrect-answer {
+  background-color: #eb5757;
+  color: #ffffff;
+}

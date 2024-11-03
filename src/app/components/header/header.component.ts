@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameSettingsService } from '../../services/game-settings.service';
 import { QuizCategory } from '../../models/quiz.model';
@@ -10,15 +10,14 @@ import { QuizCategory } from '../../models/quiz.model';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   quizCategory: QuizCategory | undefined;
+  questions: any[] = [];
 
   constructor(
     private router: Router,
     protected gameSettingsService: GameSettingsService
-  ) {}
-
-  ngOnInit() {
+  ) {
     this.quizCategory = this.gameSettingsService.getQuizCategory();
   }
 

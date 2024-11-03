@@ -18,11 +18,9 @@ module.exports = {
         easy: "#6FCF97",
         medium: "#F2C94C",
         hard: "#EB5757",
-        test1: "#34D399",
-        test2: "#F2994A",
       },
       height: {
-        "primary-button": "56px"
+        "primary-button": "56px",
       },
       borderColor: {
         theme: "#1c1a5d",

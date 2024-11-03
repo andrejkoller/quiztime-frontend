@@ -18,24 +18,18 @@ import { Router } from '@angular/router';
 export class QuestionAnswerComponent implements OnInit {
   questions: any[] = [];
   answers: any[] = [];
-  currentQuestionIndex: number = 1;
 
-  selectedAnswer: string | null = null;
+  currentQuestionIndex: number = 1;
   currentQuestion: any;
 
-  playerAmount: number = 0;
-  selectedCategory: QuizCategory | undefined;
-  selectedDifficulty: QuizDifficulty | undefined;
-  playerLiveAmount: number = 0;
-  questionAmount: number = 0;
-
-  players: string = '';
+  selectedAnswer: string | null = null;
+  isCorrect: boolean | null = null;
 
   constructor(
     protected quizService: QuizService,
     protected gameSettingsService: GameSettingsService,
-    private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -43,19 +37,12 @@ export class QuestionAnswerComponent implements OnInit {
   }
 
   fetchQuestions() {
-    this.playerAmount = this.gameSettingsService.getPlayerCapacity();
-    this.selectedCategory = this.gameSettingsService.getQuizCategory();
-    this.selectedDifficulty = this.gameSettingsService.getQuizDifficulty();
-    this.playerLiveAmount = this.gameSettingsService.getPlayerLiveCapacity();
-    this.questionAmount = this.gameSettingsService.getQuestionCapacity();
-    this.players = this.gameSettingsService.getPlayerNames();
+    const category = this.gameSettingsService.getQuizCategory();
+    const difficulty = this.gameSettingsService.getQuizDifficulty();
+    const amount = this.gameSettingsService.getQuestionCapacity();
 
     this.quizService
-      .getQuestions(
-        this.selectedCategory,
-        this.selectedDifficulty,
-        this.questionAmount
-      )
+      .getQuestions(category, difficulty, amount)
       .pipe(
         map((response: { results: any[] }) => response.results),
         catchError((error) => {
@@ -85,23 +72,29 @@ export class QuestionAnswerComponent implements OnInit {
     this.selectedAnswer = answer;
   }
 
-  goToNextQuestion() {
+  async goToNextQuestion() {
     if (this.selectedAnswer === this.currentQuestion.correctAnswer) {
-      this.toastr.success('Correct!');
+      this.isCorrect = true;
     } else {
-      this.toastr.error('Wrong answer.');
+      this.isCorrect = false;
     }
 
-    this.selectedAnswer = null;
+    await this.wait(1500);
 
+    this.selectedAnswer = null;
+    this.isCorrect = null;
     this.currentQuestionIndex++;
 
     if (this.currentQuestionIndex < this.questions.length) {
       this.currentQuestion = this.questions[this.currentQuestionIndex];
     } else {
-      this.router.navigate(['/podium']).then(() => {
-        this.toastr.info('Quiz Completed!');
-      });
+      this.router.navigate(['/podium']);
     }
+  }
+
+  async wait(ms: number) {
+    return await new Promise((resolve: any) => {
+      setTimeout(resolve, ms);
+    });
   }
 }

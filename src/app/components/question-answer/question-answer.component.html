@@ -1,8 +1,3 @@
-<div *ngIf="questions.length === 0">
-  <p class="text-primary text-center font-ubuntu-bold text-2xl">
-    Loading questions...
-  </p>
-</div>
 <div class="flex flex-col h-full w-full">
   <div class="flex flex-col gap-8">
     <div *ngIf="this.questions.length > 0" class="flex flex-col gap-4">
@@ -23,6 +18,10 @@
           let answer of this.questions[this.currentQuestionIndex]?.answers
         "
         [class.selected]="answer === selectAnswer"
+        [ngClass]="{
+          'correct-answer': selectedAnswer === answer && isCorrect === true,
+          'incorrect-answer': selectedAnswer === answer && isCorrect === false
+        }"
         (click)="selectAnswer(answer)"
         class="answers focus:bg-button font-ubuntu-bold bg-primary rounded-xl text-center h-14 w-full transition"
       >
