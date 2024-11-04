@@ -100,15 +100,6 @@ export class GameSettingsService {
     return this.questionCapacitySubject.getValue();
   }
 
-  /* Player Names */
-  setPlayerNames(value: string) {
-    this.playerSubject.next(value);
-  }
-
-  getPlayerNames(): string {
-    return this.playerSubject.getValue();
-  }
-
   /* Player Points */
   setPlayerPoints(value: number) {
     this.playerPointCapacitySubject.next(value);

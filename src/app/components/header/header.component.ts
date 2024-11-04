@@ -12,11 +12,10 @@ import { QuizCategory } from '../../models/quiz.model';
 })
 export class HeaderComponent {
   quizCategory: QuizCategory | undefined;
-  questions: any[] = [];
 
   constructor(
     private router: Router,
-    protected gameSettingsService: GameSettingsService
+    private gameSettingsService: GameSettingsService
   ) {
     this.quizCategory = this.gameSettingsService.getQuizCategory();
   }

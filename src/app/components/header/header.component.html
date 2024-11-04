@@ -10,12 +10,7 @@
     </div>
     <div class="flex flex-row items-center justify-between w-full">
       <div class="flex flex-row justify-center w-full">
-        @if (this.questions.length === 0) {
-        <p class="text-primary text-center font-ubuntu-bold">
-          Loading questions...
-        </p>
-        } @else if (this.questions.length > 0) { @switch (this.quizCategory) {
-        @case (9) {
+        @switch (this.quizCategory) { @case (9) {
         <p class="text-primary font-ubuntu-bold uppercase">General</p>
         } @case (23) {
         <p class="text-primary font-ubuntu-bold uppercase">History</p>
@@ -25,7 +20,7 @@
         <p class="text-primary font-ubuntu-bold uppercase">Music</p>
         } @case (10) {
         <p class="text-primary font-ubuntu-bold uppercase">Books</p>
-        } } }
+        } }
       </div>
       <div
         class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl hover:opacity-50"

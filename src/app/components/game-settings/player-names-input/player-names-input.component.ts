@@ -21,52 +21,46 @@ import { Player } from '../../../models/player.model';
 })
 export class PlayerNamesInputComponent implements OnInit {
   playerForm!: FormGroup;
-  players: Player[] = [];
-  playerCount: number | undefined;
+  nameControl: FormControl = new FormControl('');
+
+  player!: Player;
+  playerList: Player[] = [];
+  currentPlayerIndex = 0;
+
+  playerCount!: number;
   playerLiveCount: number | undefined;
 
   constructor(
     protected gameSettingsService: GameSettingsService,
-    private router: Router,
-    private fb: FormBuilder
-  ) {
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
     this.playerCount = this.gameSettingsService.getPlayerCapacity();
     this.playerLiveCount = this.gameSettingsService.getPlayerLiveCapacity();
   }
 
-  ngOnInit(): void {
-    this.initForm();
-  }
-
-  private initForm() {
-    const playerCount = this.playerCount ?? 1;
-
-    this.playerForm = this.fb.group({
-      players: this.fb.array(
-        Array.from({ length: playerCount }, () =>
-          this.fb.group({
-            name: ['', Validators.required],
-            lives: [this.playerLiveCount],
-            points: [0],
-          })
-        )
-      ),
-    });
-  }
-
-  get playerControls() {
-    return (this.playerForm.get('players') as FormArray).controls;
-  }
-
   submitPlayerNames() {
-    this.players = this.playerForm.value.players.map((player: any) => ({
-      name: player.name,
-      lives: player.lives,
-      points: player.points,
-    }));
+    if (this.currentPlayerIndex < this.playerCount) {
+      const player = {
+        name: this.nameControl.value,
+        lives: this.playerLiveCount,
+        points: 0,
+        placement: 0,
+      };
 
-    this.gameSettingsService.setPlayers(this.players);
+      this.playerList.push(player);
+      this.nameControl.reset();
+      this.currentPlayerIndex++;
 
+      if (this.currentPlayerIndex == this.playerCount) {
+        this.finalizePlayers();
+      }
+    }
+  }
+
+  finalizePlayers() {
+    this.gameSettingsService.setPlayers(this.playerList);
     this.router.navigate(['/playground']);
   }
 }

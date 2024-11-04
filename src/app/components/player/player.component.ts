@@ -1,4 +1,4 @@
-import { NgFor, NgForOf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { GameSettingsService } from '../../services/game-settings.service';
@@ -22,5 +22,6 @@ export class PlayerComponent implements OnInit {
 
   fetchPlayers() {
     this.players = this.gameSettingsService.getPlayers();
+    console.log(this.players);
   }
 }

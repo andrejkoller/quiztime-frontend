@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-center items-center h-screen">
-  @if (this.players === 1) {
+  @if (this.playerCount === 1) {
   <div class="mt-10">
     <p
       class="font-ubuntu-bold text-2xl text-center text-primary leading-relaxed"
@@ -8,7 +8,7 @@
     </p>
   </div>
   <div class="flex flex-col justify-center h-full w-full">
-    <div class="flex justify-center items-center"></div>
+    <div class="flex justify-center items-center">{{ this.players }}</div>
   </div>
   } @else {
   <div class="mt-10">
@@ -18,13 +18,20 @@
       Leaderboard
     </p>
   </div>
-  <div class="flex flex-col justify-center h-full w-full">
+  <div class="flex flex-col justify-center gap-4 h-full w-full">
     <div
-      class="flex justify-center items-center border-2 rounded-xl h-12 w-full"
+      class="flex justify-between items-center border-2 rounded-xl pl-2 pr-2 h-12 w-full"
+      *ngFor="let player of players"
     >
-      <p class="font-ubuntu-bold text-xl text-primary">
-        {{ this.winner }}
-      </p>
+      <div class="font-ubuntu-bold text-xl text-primary">
+        {{ this.player.placement }}
+      </div>
+      <div class="font-ubuntu-bold text-xl text-primary">
+        {{ this.player.name }}
+      </div>
+      <div class="font-ubuntu-bold text-xl text-primary">
+        {{ this.player.points }}
+      </div>
     </div>
   </div>
   }

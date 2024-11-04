@@ -1,25 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { Router, RouterLink } from '@angular/router';
-import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
 import { GameSettingsService } from '../../services/game-settings.service';
+import { Player } from '../../models/player.model';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-podium',
   standalone: true,
-  imports: [
-    MatCard,
-    MatCardContent,
-    RouterLink,
-    FooterComponent,
-    HeaderComponent,
-  ],
+  imports: [MatCard, MatCardContent, RouterLink, HeaderComponent, NgFor],
   templateUrl: './podium.component.html',
   styleUrl: './podium.component.css',
 })
 export class PodiumComponent implements OnInit {
-  players: number = 1;
+  players: Player[] = [];
+  playerCount: number = 1;
 
   constructor(
     private router: Router,
@@ -27,10 +23,10 @@ export class PodiumComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.players = this.gameSettingsService.getPlayerCapacity();
+    this.playerCount = this.gameSettingsService.getPlayerCapacity();
+    this.players = this.gameSettingsService.getPlayers();
+    console.log(this.players);
   }
-
-  winner: string = 'Andrej';
 
   goToSettings(): void {
     this.router.navigate(['/game-settings']).then(() => {

@@ -1,5 +1,4 @@
 export class Quiz {
-  id: number | undefined;
   name: string | undefined;
   category: QuizCategory | undefined;
   difficulty: QuizDifficulty | undefined;
