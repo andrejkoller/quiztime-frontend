@@ -1,6 +1,17 @@
 <div align="left">
   <h1>Quiztime Frontend ❓🧠</h1>
 </div>
+<div align="left">
+  <h3>ABOUT THIS PROJECT</h3>
+</div>
+<div align="left">
+  <p>
+    This is a quiz application built using Angular and styled with Tailwind CSS.
+  </p>
+  <p>
+    The project demonstrates a dynamic and responsive UI, incorporating modern web technologies to create an engaging user experience. The app fetches quiz questions from an API and allows users to test their knowledge across various topics.
+  </p>
+</div>
 <div align="center">
   <div>
     <img src="https://github.com/user-attachments/assets/b72ab38f-e1e2-4b93-a313-e9d9f47cd53b">
@@ -23,15 +34,4 @@
   <div>
     <img src="https://github.com/user-attachments/assets/34fa4ce2-1eef-46b9-a5ac-d3e57857d10b">
   </div>
-</div>
-<div align="left">
-  <h3>ABOUT THIS PROJECT</h3>
-</div>
-<div align="left">
-  <p>
-    This is a quiz application built using Angular and styled with Tailwind CSS.
-  </p>
-  <p>
-    The project demonstrates a dynamic and responsive UI, incorporating modern web technologies to create an engaging user experience. The app fetches quiz questions from an API and allows users to test their knowledge across various topics.
-  </p>
 </div>
