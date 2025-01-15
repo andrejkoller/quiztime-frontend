@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatCard, MatCardContent } from '@angular/material/card';
-import { Router, RouterLink } from '@angular/router';
-import { HeaderComponent } from '../header/header.component';
+import { Router } from '@angular/router';
 import { GameSettingsService } from '../../services/game-settings.service';
 import { Player } from '../../models/player.model';
 import { NgFor } from '@angular/common';
@@ -9,7 +7,7 @@ import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-podium',
   standalone: true,
-  imports: [MatCard, MatCardContent, RouterLink, HeaderComponent, NgFor],
+  imports: [NgFor],
   templateUrl: './podium.component.html',
   styleUrl: './podium.component.css',
 })

@@ -9,35 +9,42 @@
     </div>
     <form class="h-full">
       <div class="flex flex-row justify-center items-center w-full">
-        <div class="flex flex-row items-center gap-4">
-          <div>
-            <input
-              id="playerCapacity"
-              [formControl]="playerCapacity"
-              min="1"
-              class="rounded-lg h-24 w-24 text-4xl"
-            />
+        <div class="flex flex-row items-center gap-8 w-full">
+          <div class="flex flex-col w-1/2 gap-4">
+            <div
+              class="playerCount-button flex flex-row justify-center items-center bg-primary h-36 w-full cursor-pointer rounded-xl"
+              (click)="setPlayerMode(1)"
+              [ngClass]="{
+                'bg-selected': playerCount === 1
+              }"
+            >
+              <i class="fa-solid fa-user text-5xl"></i>
+            </div>
+            <span
+              class="font-ubuntu-bold text-2xl text-center text-primary leading-relaxed"
+              >1 Player</span
+            >
           </div>
-          <div class="flex flex-col gap-4 h-full">
-            <button
-              type="button"
-              (click)="incrementPlayerCapacity()"
-              class="bg-primary rounded-xl h-12 w-12 text-theme text-2xl hover:opacity-50 transition-opacity"
+          <div class="flex flex-col w-1/2 gap-4">
+            <div
+              class="playerCount-button flex flex-row justify-center items-center bg-primary h-36 w-full cursor-pointer rounded-xl hover:bg-button"
+              (click)="setPlayerMode(2)"
+              [ngClass]="{
+                'bg-selected': playerCount === 2
+              }"
             >
-              <i class="fa-solid fa-caret-up"></i>
-            </button>
-            <button
-              type="button"
-              (click)="decrementPlayerCapacity()"
-              class="bg-primary rounded-xl h-12 w-12 text-theme text-2xl hover:opacity-50 transition-opacity"
+              <i class="fa-solid fa-user-group text-5xl"></i>
+            </div>
+            <span
+              class="font-ubuntu-bold text-2xl text-center text-primary leading-relaxed"
+              >2 Players</span
             >
-              <i class="fa-solid fa-caret-down"></i>
-            </button>
           </div>
         </div>
       </div>
     </form>
   </div>
+  @if (playerCount > 0) {
   <div class="h-14 w-full mb-10">
     <button
       (click)="this.gameSettingsService.nextStep()"
@@ -46,4 +53,5 @@
       Continue
     </button>
   </div>
+  }
 </div>

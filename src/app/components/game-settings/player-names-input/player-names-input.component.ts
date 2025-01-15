@@ -28,7 +28,7 @@ export class PlayerNamesInputComponent implements OnInit {
   currentPlayerIndex = 0;
 
   playerCount!: number;
-  playerLiveCount: number | undefined;
+  playerLiveCount!: number;
 
   constructor(
     protected gameSettingsService: GameSettingsService,
@@ -45,7 +45,7 @@ export class PlayerNamesInputComponent implements OnInit {
       const player = {
         name: this.nameControl.value,
         lives: this.playerLiveCount,
-        points: 0,
+        score: 0,
         placement: 0,
       };
 

@@ -24,13 +24,10 @@
       *ngFor="let player of players"
     >
       <div class="font-ubuntu-bold text-xl text-primary">
-        {{ this.player.placement }}
+        {{ player.name }}
       </div>
       <div class="font-ubuntu-bold text-xl text-primary">
-        {{ this.player.name }}
-      </div>
-      <div class="font-ubuntu-bold text-xl text-primary">
-        {{ this.player.points }}
+        {{ player.score }}
       </div>
     </div>
   </div>

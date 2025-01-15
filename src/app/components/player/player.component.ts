@@ -1,13 +1,13 @@
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatCard, MatCardContent } from '@angular/material/card';
 import { GameSettingsService } from '../../services/game-settings.service';
 import { Player } from '../../models/player.model';
+import { PlayerService } from '../../services/player.service';
 
 @Component({
   selector: 'app-player',
   standalone: true,
-  imports: [MatCard, MatCardContent, NgFor],
+  imports: [NgFor, CommonModule],
   templateUrl: './player.component.html',
   styleUrl: './player.component.css',
 })

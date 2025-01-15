@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../services/quiz.service';
 import { NgClass, NgFor, NgForOf, NgIf } from '@angular/common';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { QuizCategory, QuizDifficulty } from '../../models/quiz.model';
 import { GameSettingsService } from '../../services/game-settings.service';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, map, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { PlayerService } from '../../services/player.service';
 
 @Component({
   selector: 'app-question-answer',
   standalone: true,
-  imports: [NgIf, MatCard, MatCardContent, NgFor, NgForOf, NgClass],
+  imports: [NgIf, NgFor, NgForOf, NgClass],
   templateUrl: './question-answer.component.html',
   styleUrl: './question-answer.component.css',
 })
@@ -22,6 +22,8 @@ export class QuestionAnswerComponent implements OnInit {
   currentQuestionIndex: number = 1;
   currentQuestion: any;
 
+  currentPlayerIndex: number = 1;
+
   selectedAnswer: string | null = null;
   isCorrect: boolean | null = null;
 
@@ -29,7 +31,8 @@ export class QuestionAnswerComponent implements OnInit {
     protected quizService: QuizService,
     protected gameSettingsService: GameSettingsService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private playerService: PlayerService
   ) {}
 
   ngOnInit(): void {
@@ -75,8 +78,10 @@ export class QuestionAnswerComponent implements OnInit {
   async goToNextQuestion() {
     if (this.selectedAnswer === this.currentQuestion.correctAnswer) {
       this.isCorrect = true;
+      this.playerService.addPointToPlayer(this.currentPlayerIndex);
     } else {
       this.isCorrect = false;
+      this.playerService.subtractLifeFromPlayer(this.currentPlayerIndex);
     }
 
     await this.wait(1500);

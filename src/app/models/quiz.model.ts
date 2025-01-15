@@ -1,8 +1,8 @@
-export class Quiz {
-  name: string | undefined;
-  category: QuizCategory | undefined;
-  difficulty: QuizDifficulty | undefined;
-  playerCapacity: number | undefined;
+export interface Quiz {
+  playerCapacity: number;
+  category: QuizCategory;
+  difficulty: QuizDifficulty;
+  name: string;
 }
 
 export enum QuizCategory {

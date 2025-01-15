@@ -8,13 +8,6 @@ import { Player } from '../models/player.model';
   providedIn: 'root',
 })
 export class GameSettingsService {
-  playerAmount: number = 0;
-  selectedCategory: QuizCategory | undefined;
-  selectedDifficulty: QuizDifficulty | undefined;
-  playerLiveAmount: number = 0;
-  questionAmount: number = 0;
-  playerPointAmount: number = 0;
-
   constructor() {}
 
   stepIndex: number = 0;
@@ -22,11 +15,11 @@ export class GameSettingsService {
   private playersSubject = new BehaviorSubject<Player[]>([]);
   players$ = this.playersSubject.asObservable();
 
-  private playerCapacitySubject = new BehaviorSubject<number>(1);
+  private playerCapacitySubject = new BehaviorSubject<number>(0);
   playerCapacity$ = this.playerCapacitySubject.asObservable();
 
   private quizCategorySubject = new BehaviorSubject<QuizCategory | undefined>(
-    QuizCategory.GeneralKnowledge
+    undefined
   );
   quizCategorySubject$ = this.quizCategorySubject.asObservable();
 
@@ -38,11 +31,8 @@ export class GameSettingsService {
   private playerLiveCapacitySubject = new BehaviorSubject<number>(1);
   playerLiveCapacity$ = this.playerLiveCapacitySubject.asObservable();
 
-  private questionCapacitySubject = new BehaviorSubject<number>(1);
+  private questionCapacitySubject = new BehaviorSubject<number>(0);
   questionCapacity$ = this.questionCapacitySubject.asObservable();
-
-  private playerSubject = new BehaviorSubject<string>('');
-  player$ = this.playerSubject.asObservable();
 
   private playerPointCapacitySubject = new BehaviorSubject<number>(0);
   playerPointCapacity$ = this.playerPointCapacitySubject.asObservable();
@@ -55,7 +45,6 @@ export class GameSettingsService {
     return this.playersSubject.getValue();
   }
 
-  /* Player Capacity */
   setPlayerCapacity(value: number) {
     this.playerCapacitySubject.next(value);
   }
@@ -64,7 +53,6 @@ export class GameSettingsService {
     return this.playerCapacitySubject.getValue();
   }
 
-  /* Quiz Category */
   setQuizCategory(category: QuizCategory) {
     this.quizCategorySubject.next(category);
   }
@@ -73,7 +61,6 @@ export class GameSettingsService {
     return this.quizCategorySubject.value;
   }
 
-  /* Quiz Difficulty */
   setQuizDifficulty(difficulty: QuizDifficulty) {
     this.quizDifficultySubject.next(difficulty);
   }
@@ -82,7 +69,6 @@ export class GameSettingsService {
     return this.quizDifficultySubject.value;
   }
 
-  /* Player Live Capacity */
   setPlayerLiveCapacity(value: number) {
     this.playerLiveCapacitySubject.next(value);
   }
@@ -91,7 +77,6 @@ export class GameSettingsService {
     return this.playerLiveCapacitySubject.getValue();
   }
 
-  /* Questions Capacity */
   setQuestionCapacity(value: number) {
     this.questionCapacitySubject.next(value);
   }
@@ -100,7 +85,6 @@ export class GameSettingsService {
     return this.questionCapacitySubject.getValue();
   }
 
-  /* Player Points */
   setPlayerPoints(value: number) {
     this.playerPointCapacitySubject.next(value);
   }
@@ -109,7 +93,6 @@ export class GameSettingsService {
     return this.playerPointCapacitySubject.getValue();
   }
 
-  /* Game Control */
   nextStep() {
     this.stepIndex++;
   }
