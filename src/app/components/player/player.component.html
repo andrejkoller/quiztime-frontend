@@ -13,11 +13,11 @@
         <span class="font-ubuntu-bold text-3xl text-theme">{{
           player.name
         }}</span>
-        <div *ngFor="let heart of [].constructor(player.lives)">
-          <i class="fa-solid fa-heart text-theme text-2xl"></i>
-        </div>
         <span class="font-ubuntu-bold text-3xl text-theme">
-          {{ player.score }}
+          Lives: {{ player.lives }}
+        </span>
+        <span class="font-ubuntu-bold text-3xl text-theme">
+          Score: {{ player.score }}
         </span>
       </div>
     </div>

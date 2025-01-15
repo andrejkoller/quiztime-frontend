@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { Player } from '../../../models/player.model';
+import { PlayerService } from '../../../services/player.service';
 
 @Component({
   selector: 'app-player-names-input',
@@ -32,6 +33,7 @@ export class PlayerNamesInputComponent implements OnInit {
 
   constructor(
     protected gameSettingsService: GameSettingsService,
+    protected playerService: PlayerService,
     private router: Router
   ) {}
 
@@ -60,7 +62,7 @@ export class PlayerNamesInputComponent implements OnInit {
   }
 
   finalizePlayers() {
-    this.gameSettingsService.setPlayers(this.playerList);
+    this.playerService.setPlayers(this.playerList);
     this.router.navigate(['/playground']);
   }
 }

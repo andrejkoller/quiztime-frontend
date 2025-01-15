@@ -1,31 +1,42 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Player } from '../models/player.model';
+import { GameSettingsService } from './game-settings.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlayerService {
-  private playersSource = new BehaviorSubject<Player[]>([]);
-  player$ = this.playersSource.asObservable();
+  private playersSubject = new BehaviorSubject<Player[]>([]);
+  players$ = this.playersSubject.asObservable();
 
-  initializePlayers(players: Player[]) {
-    this.playersSource.next(players);
+  private players: Player[] = [];
+
+  setPlayers(players: Player[]) {
+    this.playersSubject.next(players);
   }
 
-  addPointToPlayer(playerIndex: number) {
-    const players = this.playersSource.getValue();
-    if (players && players[playerIndex]) {
-      players[playerIndex].score += 1;
-      this.playersSource.next(players);
-    }
+  getPlayers(): Player[] {
+    return this.playersSubject.getValue();
   }
 
-  subtractLifeFromPlayer(playerIndex: number) {
-    const players = this.playersSource.getValue();
-    if (players && players[playerIndex]) {
-      players[playerIndex].lives -= 1;
-      this.playersSource.next(players);
+  addPointToPlayer(index: number): void {
+    this.players = this.getPlayers();
+    if (this.players[index]) {
+      this.players[index].score += 1;
+      this.playersSubject.next([...this.players]);
     }
+
+    console.log(this.players);
+  }
+
+  subtractLifeFromPlayer(index: number): void {
+    this.players = this.getPlayers();
+    if (this.players[index] && this.players[index].lives > 0) {
+      this.players[index].lives -= 1;
+      this.playersSubject.next([...this.players]);
+    }
+
+    console.log(this.players);
   }
 }

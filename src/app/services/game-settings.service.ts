@@ -12,9 +12,6 @@ export class GameSettingsService {
 
   stepIndex: number = 0;
 
-  private playersSubject = new BehaviorSubject<Player[]>([]);
-  players$ = this.playersSubject.asObservable();
-
   private playerCapacitySubject = new BehaviorSubject<number>(0);
   playerCapacity$ = this.playerCapacitySubject.asObservable();
 
@@ -28,7 +25,7 @@ export class GameSettingsService {
   >(undefined);
   quizDifficultySubject$ = this.quizDifficultySubject.asObservable();
 
-  private playerLiveCapacitySubject = new BehaviorSubject<number>(1);
+  private playerLiveCapacitySubject = new BehaviorSubject<number>(0);
   playerLiveCapacity$ = this.playerLiveCapacitySubject.asObservable();
 
   private questionCapacitySubject = new BehaviorSubject<number>(0);
@@ -36,14 +33,6 @@ export class GameSettingsService {
 
   private playerPointCapacitySubject = new BehaviorSubject<number>(0);
   playerPointCapacity$ = this.playerPointCapacitySubject.asObservable();
-
-  setPlayers(players: Player[]) {
-    this.playersSubject.next(players);
-  }
-
-  getPlayers(): Player[] {
-    return this.playersSubject.getValue();
-  }
 
   setPlayerCapacity(value: number) {
     this.playerCapacitySubject.next(value);

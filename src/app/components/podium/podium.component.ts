@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { GameSettingsService } from '../../services/game-settings.service';
 import { Player } from '../../models/player.model';
 import { NgFor } from '@angular/common';
+import { PlayerService } from '../../services/player.service';
 
 @Component({
   selector: 'app-podium',
@@ -17,12 +18,13 @@ export class PodiumComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private gameSettingsService: GameSettingsService
+    private gameSettingsService: GameSettingsService,
+    private playerService: PlayerService
   ) {}
 
   ngOnInit(): void {
     this.playerCount = this.gameSettingsService.getPlayerCapacity();
-    this.players = this.gameSettingsService.getPlayers();
+    this.players = this.playerService.getPlayers();
     console.log(this.players);
   }
 

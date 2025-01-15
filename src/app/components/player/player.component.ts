@@ -1,8 +1,8 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { GameSettingsService } from '../../services/game-settings.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { Player } from '../../models/player.model';
 import { PlayerService } from '../../services/player.service';
+import { GameSettingsService } from '../../services/game-settings.service';
 
 @Component({
   selector: 'app-player',
@@ -12,16 +12,17 @@ import { PlayerService } from '../../services/player.service';
   styleUrl: './player.component.css',
 })
 export class PlayerComponent implements OnInit {
+  @Input()
   players: Player[] = [];
 
-  constructor(private gameSettingsService: GameSettingsService) {}
+  constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {
     this.fetchPlayers();
   }
 
   fetchPlayers() {
-    this.players = this.gameSettingsService.getPlayers();
+    this.players = this.playerService.getPlayers();
     console.log(this.players);
   }
 }

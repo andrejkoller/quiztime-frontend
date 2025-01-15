@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { QuizService } from '../../services/quiz.service';
 import { NgClass, NgFor, NgForOf, NgIf } from '@angular/common';
-import { MatCard, MatCardContent } from '@angular/material/card';
 import { GameSettingsService } from '../../services/game-settings.service';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, map, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { PlayerService } from '../../services/player.service';
+import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-question-answer',
@@ -22,7 +22,7 @@ export class QuestionAnswerComponent implements OnInit {
   currentQuestionIndex: number = 1;
   currentQuestion: any;
 
-  currentPlayerIndex: number = 1;
+  currentPlayerIndex: number = 0;
 
   selectedAnswer: string | null = null;
   isCorrect: boolean | null = null;
@@ -30,9 +30,9 @@ export class QuestionAnswerComponent implements OnInit {
   constructor(
     protected quizService: QuizService,
     protected gameSettingsService: GameSettingsService,
+    protected playerService: PlayerService,
     private router: Router,
-    private toastr: ToastrService,
-    private playerService: PlayerService
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -89,12 +89,26 @@ export class QuestionAnswerComponent implements OnInit {
     this.selectedAnswer = null;
     this.isCorrect = null;
     this.currentQuestionIndex++;
+    this.currentPlayerIndex = this.goToNextPlayer();
 
-    if (this.currentQuestionIndex < this.questions.length) {
+    if (
+      this.currentQuestionIndex <= this.questions.length &&
+      this.playerService.getPlayers()[this.currentPlayerIndex].lives > 0
+    ) {
       this.currentQuestion = this.questions[this.currentQuestionIndex];
     } else {
       this.router.navigate(['/podium']);
     }
+  }
+
+  goToNextPlayer(): number {
+    if (this.playerService.getPlayers().length === 1) {
+      return 0;
+    }
+
+    return (
+      (this.currentPlayerIndex + 1) % this.playerService.getPlayers().length
+    );
   }
 
   async wait(ms: number) {
