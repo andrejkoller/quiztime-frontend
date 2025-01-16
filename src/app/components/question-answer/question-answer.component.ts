@@ -92,7 +92,7 @@ export class QuestionAnswerComponent implements OnInit {
     this.currentPlayerIndex = this.goToNextPlayer();
 
     if (
-      this.currentQuestionIndex <= this.questions.length &&
+      this.currentQuestionIndex < this.questions.length &&
       this.playerService.getPlayers()[this.currentPlayerIndex].lives > 0
     ) {
       this.currentQuestion = this.questions[this.currentQuestionIndex];

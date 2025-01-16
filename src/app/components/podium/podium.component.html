@@ -7,8 +7,14 @@
       Your Score
     </p>
   </div>
-  <div class="flex flex-col justify-center h-full w-full">
-    <div class="flex justify-center items-center">{{ this.players }}</div>
+  <div
+    class="flex flex-col justify-center h-full w-full"
+    *ngFor="let player of players"
+  >
+    <span
+      class="flex flex-row justify-center font-ubuntu-bold text-primary text-3xl"
+      >{{ player.score }}</span
+    >
   </div>
   } @else {
   <div class="mt-10">
@@ -20,15 +26,15 @@
   </div>
   <div class="flex flex-col justify-center gap-4 h-full w-full">
     <div
-      class="flex justify-between items-center border-2 rounded-xl pl-2 pr-2 h-12 w-full"
+      class="flex justify-between items-center border-2 rounded-xl pl-2 pr-2 h-24 w-full"
       *ngFor="let player of players"
     >
-      <div class="font-ubuntu-bold text-xl text-primary">
+      <span class="font-ubuntu-bold text-primary text-3xl">
         {{ player.name }}
-      </div>
-      <div class="font-ubuntu-bold text-xl text-primary">
-        {{ player.score }}
-      </div>
+      </span>
+      <span class="font-ubuntu-bold text-primary text-3xl">
+        {{ player.score }} Pts.
+      </span>
     </div>
   </div>
   }

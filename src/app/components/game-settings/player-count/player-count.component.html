@@ -8,38 +8,50 @@
       </p>
     </div>
     <form class="h-full">
-      <div class="flex flex-row justify-center items-center w-full">
-        <div class="flex flex-row items-center gap-8 w-full">
-          <div class="flex flex-col w-1/2 gap-4">
-            <div
-              class="playerCount-button flex flex-row justify-center items-center bg-primary h-36 w-full cursor-pointer rounded-xl"
-              (click)="setPlayerMode(1)"
-              [ngClass]="{
-                'bg-selected': playerCount === 1
-              }"
-            >
-              <i class="fa-solid fa-user text-5xl"></i>
-            </div>
-            <span
-              class="font-ubuntu-bold text-2xl text-center text-primary leading-relaxed"
-              >1 Player</span
-            >
-          </div>
-          <div class="flex flex-col w-1/2 gap-4">
-            <div
-              class="playerCount-button flex flex-row justify-center items-center bg-primary h-36 w-full cursor-pointer rounded-xl hover:bg-button"
-              (click)="setPlayerMode(2)"
-              [ngClass]="{
-                'bg-selected': playerCount === 2
-              }"
-            >
-              <i class="fa-solid fa-user-group text-5xl"></i>
-            </div>
-            <span
-              class="font-ubuntu-bold text-2xl text-center text-primary leading-relaxed"
-              >2 Players</span
-            >
-          </div>
+      <div class="flex flex-col justify-center items-center gap-4 w-full">
+        <div class="flex flex-row items-center gap-4 w-full">
+          <button
+            type="button"
+            class="playerCount-button bg-primary rounded-xl w-full h-32 transition"
+            (click)="setPlayerMode(1)"
+            [ngClass]="{
+              'bg-selected': playerCount === 1
+            }"
+          >
+            <i class="fa-solid fa-1 text-theme text-3xl"></i>
+          </button>
+          <button
+            type="button"
+            class="playerCount-button bg-primary rounded-xl w-full h-32 transition"
+            (click)="setPlayerMode(2)"
+            [ngClass]="{
+              'bg-selected': playerCount === 2
+            }"
+          >
+            <i class="fa-solid fa-2 text-theme text-3xl"></i>
+          </button>
+        </div>
+        <div class="flex flex-row items-center gap-4 w-full">
+          <button
+            type="button"
+            class="playerCount-button bg-primary rounded-xl w-full h-32 transition"
+            (click)="setPlayerMode(3)"
+            [ngClass]="{
+              'bg-selected': playerCount === 3
+            }"
+          >
+            <i class="fa-solid fa-3 text-theme text-3xl"></i>
+          </button>
+          <button
+            type="button"
+            class="playerCount-button bg-primary rounded-xl w-full h-32 transition"
+            (click)="setPlayerMode(4)"
+            [ngClass]="{
+              'bg-selected': playerCount === 4
+            }"
+          >
+            <i class="fa-solid fa-4 text-theme text-3xl"></i>
+          </button>
         </div>
       </div>
     </form>

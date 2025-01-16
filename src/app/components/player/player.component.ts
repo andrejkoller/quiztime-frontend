@@ -19,10 +19,14 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchPlayers();
+    console.log(this.players);
   }
 
   fetchPlayers() {
     this.players = this.playerService.getPlayers();
-    console.log(this.players);
+  }
+
+  getArray(count: number): number[] {
+    return Array.from({ length: count });
   }
 }

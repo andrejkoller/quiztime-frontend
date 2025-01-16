@@ -1,24 +1,33 @@
 @if (this.players.length > 0) {
-<div class="flex flex-row items-center w-full" *ngFor="let player of players">
-  <div class="flex flex-row justify-center items-start h-full w-full">
-    <div
-      class="flex flex-row justify-between items-center w-full pt-5 pb-5 pr-5 pl-5 h-full"
+<div *ngFor="let player of players; let i = index">
+  <div class="flex flex-row justify-between w-full">
+    <span class="font-ubuntu-bold text-3xl text-primary ml-3"
+      >{{ i + 1 }}. Player</span
     >
-      <div class="flex flex-row justify-center items-center">
-        <i
-          class="fa-solid fa-user text-theme text-5xl p-8 border border-theme rounded-xl"
-        ></i>
-      </div>
-      <div class="flex flex-col justify-center items-center gap-2">
-        <span class="font-ubuntu-bold text-3xl text-theme">{{
-          player.name
-        }}</span>
-        <span class="font-ubuntu-bold text-3xl text-theme">
-          Lives: {{ player.lives }}
-        </span>
-        <span class="font-ubuntu-bold text-3xl text-theme">
-          Score: {{ player.score }}
-        </span>
+    <span class="font-ubuntu-bold text-3xl text-primary ml-3">{{
+      player.name
+    }}</span>
+  </div>
+  <div class="bg-primary rounded-xl">
+    <div class="flex flex-row justify-center items-start h-full w-full">
+      <div
+        class="flex flex-row justify-between items-center w-full pt-5 pb-5 pr-5 pl-5 h-full"
+      >
+        <div class="flex flex-row justify-center items-center">
+          <i
+            class="fa-solid fa-user text-theme text-5xl p-8 border border-theme rounded-xl"
+          ></i>
+        </div>
+        <div class="flex flex-col justify-center items-center gap-2">
+          <span class="font-ubuntu-bold text-3xl text-theme">
+            <span *ngFor="let i of getArray(player.lives)">
+              <i class="fa-solid fa-heart"></i>
+            </span>
+          </span>
+          <span class="font-ubuntu-bold text-3xl text-theme">
+            {{ player.score }} Pts.
+          </span>
+        </div>
       </div>
     </div>
   </div>
