@@ -45,14 +45,27 @@ export class PlayerNamesInputComponent implements OnInit {
   submitPlayerNames() {
     if (this.currentPlayerIndex < this.playerCount) {
       const player = {
+        id: this.currentPlayerIndex + 1,
         name: this.nameControl.value,
         lives: this.playerLiveCount,
         score: 0,
         placement: 0,
         emoji: '',
+        color: '',
       };
 
       this.playerList.push(player);
+
+      if (player.id === 1) {
+        player.color = '#ff6f61';
+      } else if (player.id === 2) {
+        player.color = '#40dee8';
+      } else if (player.id === 3) {
+        player.color = '#f4d35e';
+      } else if (player.id === 4) {
+        player.color = '#8e44ad';
+      }
+
       this.nameControl.reset();
       this.currentPlayerIndex++;
 
