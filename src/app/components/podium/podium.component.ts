@@ -26,14 +26,18 @@ export class PodiumComponent implements OnInit {
     this.generatePlacements();
   }
 
-  calculateWinner(): Player {
+  calculateWinner(): string {
     let winner: Player = this.players[0];
     for (let i = 1; i < this.playerCount; i++) {
       if (this.players[i].score > winner.score) {
         winner = this.players[i];
       }
+
+      if (this.players[i].score === winner.score) {
+        return "It's a tie!";
+      }
     }
-    return winner;
+    return winner.name + ' wins! 🎉';
   }
 
   generatePlacements(): void {
