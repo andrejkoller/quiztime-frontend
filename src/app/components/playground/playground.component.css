@@ -13,3 +13,7 @@ button:disabled {
   background-color: transparent;
   color: #ffffff;
 }
+
+.player-card-container {
+  max-width: 425px;
+}

@@ -23,9 +23,43 @@ export class PodiumComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.generatePlacements();
+  }
+
+  calculateWinner(): Player {
+    let winner: Player = this.players[0];
+    for (let i = 1; i < this.playerCount; i++) {
+      if (this.players[i].score > winner.score) {
+        winner = this.players[i];
+      }
+    }
+    return winner;
+  }
+
+  generatePlacements(): void {
     this.playerCount = this.gameSettingsService.getPlayerCapacity();
     this.players = this.playerService.getPlayers();
-    console.log(this.players);
+
+    for (let i = 0; i < this.playerCount; i++) {
+      this.players[i].placement = i + 1;
+
+      switch (this.players[i].placement) {
+        case 1:
+          this.players[i].emoji = '🥇';
+          break;
+        case 2:
+          this.players[i].emoji = '🥈';
+          break;
+        case 3:
+          this.players[i].emoji = '🥉';
+          break;
+        default:
+          this.players[i].emoji = '👎';
+          break;
+      }
+
+      this.players.sort((a, b) => b.score - a.score);
+    }
   }
 
   goToSettings(): void {

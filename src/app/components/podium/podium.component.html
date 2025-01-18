@@ -18,17 +18,22 @@
   </div>
   } @else {
   <div class="mt-10">
-    <p
-      class="font-ubuntu-bold text-2xl text-center text-primary leading-relaxed"
-    >
-      Leaderboard
-    </p>
+    @if (calculateWinner()) {
+    <div class="flex justify-center items-center">
+      <p class="font-ubuntu-bold text-primary text-3xl">
+        {{ calculateWinner().name }} won 🎉
+      </p>
+    </div>
+    }
   </div>
   <div class="flex flex-col justify-center gap-4 h-full w-full">
     <div
       class="flex justify-between items-center border-2 rounded-xl pl-2 pr-2 h-24 w-full"
       *ngFor="let player of players"
     >
+      <span class="font-ubuntu-bold text-primary text-3xl">
+        {{ player.emoji }}
+      </span>
       <span class="font-ubuntu-bold text-primary text-3xl">
         {{ player.name }}
       </span>

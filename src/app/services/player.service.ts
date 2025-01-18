@@ -26,8 +26,6 @@ export class PlayerService {
       this.players[index].score += 1;
       this.playersSubject.next([...this.players]);
     }
-
-    console.log(this.players);
   }
 
   subtractLifeFromPlayer(index: number): void {
@@ -36,7 +34,5 @@ export class PlayerService {
       this.players[index].lives -= 1;
       this.playersSubject.next([...this.players]);
     }
-
-    console.log(this.players);
   }
 }

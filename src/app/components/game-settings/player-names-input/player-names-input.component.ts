@@ -16,7 +16,7 @@ import { PlayerService } from '../../../services/player.service';
 @Component({
   selector: 'app-player-names-input',
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor],
+  imports: [ReactiveFormsModule],
   templateUrl: './player-names-input.component.html',
   styleUrl: './player-names-input.component.css',
 })
@@ -49,6 +49,7 @@ export class PlayerNamesInputComponent implements OnInit {
         lives: this.playerLiveCount,
         score: 0,
         placement: 0,
+        emoji: '',
       };
 
       this.playerList.push(player);
