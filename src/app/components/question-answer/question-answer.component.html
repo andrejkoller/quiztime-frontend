@@ -22,8 +22,8 @@
         *ngFor="
           let answer of this.questions[this.currentQuestionIndex]?.answers
         "
-        [class.selected]="answer === selectAnswer"
         [ngClass]="{
+          'selected-answer': selectedAnswer === answer,
           'correct-answer': selectedAnswer === answer && isCorrect === true,
           'incorrect-answer': selectedAnswer === answer && isCorrect === false
         }"
