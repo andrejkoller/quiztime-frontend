@@ -12,6 +12,8 @@ export class PlayerService {
 
   private players: Player[] = [];
 
+  currentPlayerIndex: number = 0;
+
   setPlayers(players: Player[]) {
     this.playersSubject.next(players);
   }
@@ -34,5 +36,13 @@ export class PlayerService {
       this.players[index].lives -= 1;
       this.playersSubject.next([...this.players]);
     }
+  }
+
+  goToNextPlayer(): number {
+    if (this.getPlayers().length === 1) {
+      return 0;
+    }
+
+    return (this.currentPlayerIndex + 1) % this.getPlayers().length;
   }
 }

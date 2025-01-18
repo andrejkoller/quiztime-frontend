@@ -15,11 +15,10 @@ export class PlayerComponent implements OnInit {
   @Input()
   players: Player[] = [];
 
-  constructor(private playerService: PlayerService) {}
+  constructor(protected playerService: PlayerService) {}
 
   ngOnInit(): void {
     this.fetchPlayers();
-    console.log(this.players);
   }
 
   fetchPlayers() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { QuizService } from '../../services/quiz.service';
 import { NgClass, NgFor, NgForOf, NgIf } from '@angular/common';
 import { GameSettingsService } from '../../services/game-settings.service';
@@ -21,8 +21,6 @@ export class QuestionAnswerComponent implements OnInit {
 
   currentQuestionIndex: number = 1;
   currentQuestion: any;
-
-  currentPlayerIndex: number = 0;
 
   selectedAnswer: string | null = null;
   isCorrect: boolean | null = null;
@@ -78,10 +76,14 @@ export class QuestionAnswerComponent implements OnInit {
   async goToNextQuestion() {
     if (this.selectedAnswer === this.currentQuestion.correctAnswer) {
       this.isCorrect = true;
-      this.playerService.addPointToPlayer(this.currentPlayerIndex);
+      this.playerService.addPointToPlayer(
+        this.playerService.currentPlayerIndex
+      );
     } else {
       this.isCorrect = false;
-      this.playerService.subtractLifeFromPlayer(this.currentPlayerIndex);
+      this.playerService.subtractLifeFromPlayer(
+        this.playerService.currentPlayerIndex
+      );
     }
 
     await this.wait(1500);
@@ -89,26 +91,17 @@ export class QuestionAnswerComponent implements OnInit {
     this.selectedAnswer = null;
     this.isCorrect = null;
     this.currentQuestionIndex++;
-    this.currentPlayerIndex = this.goToNextPlayer();
+    this.playerService.currentPlayerIndex = this.playerService.goToNextPlayer();
 
     if (
       this.currentQuestionIndex < this.questions.length &&
-      this.playerService.getPlayers()[this.currentPlayerIndex].lives > 0
+      this.playerService.getPlayers()[this.playerService.currentPlayerIndex]
+        .lives > 0
     ) {
       this.currentQuestion = this.questions[this.currentQuestionIndex];
     } else {
       this.router.navigate(['/podium']);
     }
-  }
-
-  goToNextPlayer(): number {
-    if (this.playerService.getPlayers().length === 1) {
-      return 0;
-    }
-
-    return (
-      (this.currentPlayerIndex + 1) % this.playerService.getPlayers().length
-    );
   }
 
   async wait(ms: number) {

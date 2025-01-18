@@ -28,16 +28,16 @@
   </div>
   <div class="flex flex-col justify-center gap-4 h-full w-full">
     <div
-      class="flex justify-between items-center border-2 rounded-xl pl-2 pr-2 h-24 w-full"
+      class="flex justify-between items-center bg-primary rounded-xl pl-2 pr-2 h-24 w-full"
       *ngFor="let player of players"
     >
-      <span class="font-ubuntu-bold text-primary text-3xl">
+      <span class="font-ubuntu-bold text-theme text-3xl">
         {{ player.emoji }}
       </span>
-      <span class="font-ubuntu-bold text-primary text-3xl">
+      <span class="font-ubuntu-bold text-theme text-3xl">
         {{ player.name }}
       </span>
-      <span class="font-ubuntu-bold text-primary text-3xl">
+      <span class="font-ubuntu-bold text-theme text-3xl">
         {{ player.score }} Pts.
       </span>
     </div>

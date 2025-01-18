@@ -1,5 +1,11 @@
 @if (this.players.length > 0) {
-<div *ngFor="let player of players; let i = index">
+<div
+  *ngFor="let player of players; let i = index"
+  [ngClass]="{
+    currentPlayerSelected: i === this.playerService.currentPlayerIndex
+  }"
+  class="brightness-50"
+>
   <div class="flex flex-row justify-between w-full">
     <span class="font-ubuntu-bold text-3xl text-primary ml-3"
       >{{ i + 1 }}. Player</span
