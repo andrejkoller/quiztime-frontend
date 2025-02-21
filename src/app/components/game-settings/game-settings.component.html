@@ -1,0 +1,73 @@
+<div class="flex flex-col justify-start gap-2 h-screen w-container">
+  <div class="flex flex-row items-start justify-between mt-24 mb-8 h-1/4-">
+    <div class="flex flex-row items-center justify-between w-full">
+      @if (this.gameSettingsService.stepIndex > 0) {
+      <div
+        class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl hover:opacity-50 transition-opacity"
+      >
+        <i
+          class="fa-solid fa-arrow-left text-theme text-2xl"
+          (click)="this.gameSettingsService.prevStep()"
+        ></i>
+      </div>
+      } @else {
+      <div
+        class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl hover:opacity-50 transition-opacity"
+      >
+        <i
+          class="fa-solid fa-arrow-left text-theme text-2xl"
+          (click)="exitSettings()"
+        ></i>
+      </div>
+      } @if (this.gameSettingsService.stepIndex <= 4) {
+      <div class="flex flex-row justify-center w-full">
+        <p class="text-primary font-ubuntu-bold uppercase">New Game</p>
+      </div>
+      } @else {
+      <div class="flex flex-row justify-center w-full">
+        <p class="text-primary font-ubuntu-bold uppercase">Join the game</p>
+      </div>
+      }
+      <div
+        class="cursor-pointer border border-white pl-2 pr-2 pt-0.5 pb-0.5 bg-white rounded-xl hover:opacity-50 transition-opacity"
+      >
+        <i
+          class="flex justify-center fa-solid fa-xmark text-theme text-2xl"
+          (click)="exitSettings()"
+        ></i>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col items-center justify-center h-full w-full">
+    <ng-container *ngIf="this.gameSettingsService.stepIndex === 0">
+      <app-player-count
+        class="flex flex-row justify-center items-center h-full w-full"
+      ></app-player-count>
+    </ng-container>
+    <ng-container *ngIf="this.gameSettingsService.stepIndex === 1">
+      <app-category-selection
+        class="flex flex-row justify-center items-center h-full w-full"
+      ></app-category-selection>
+    </ng-container>
+    <ng-container *ngIf="this.gameSettingsService.stepIndex === 2"
+      ><app-difficulty-selection
+        class="flex flex-row justify-center items-center h-full w-full"
+      ></app-difficulty-selection
+    ></ng-container>
+    <ng-container *ngIf="this.gameSettingsService.stepIndex === 3"
+      ><app-player-lives
+        class="flex flex-row justify-center items-center h-full w-full"
+      ></app-player-lives
+    ></ng-container>
+    <ng-container *ngIf="this.gameSettingsService.stepIndex === 4"
+      ><app-rounds-count
+        class="flex flex-row justify-center items-center h-full w-full"
+      ></app-rounds-count
+    ></ng-container>
+    <ng-container *ngIf="this.gameSettingsService.stepIndex === 5"
+      ><app-player-names-input
+        class="flex flex-row justify-center items-center h-full w-full"
+      ></app-player-names-input
+    ></ng-container>
+  </div>
+</div>

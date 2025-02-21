@@ -1,0 +1,14 @@
+@media all and (max-width: 320px) {
+  :host {
+    display: flex;
+    justify-content: center;
+  }
+
+  .w-container {
+    width: 90vw;
+  }
+}
+
+.fa-xmark {
+  width: 21.5px;
+}

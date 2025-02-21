@@ -1,0 +1,67 @@
+<div class="flex flex-col justify-start h-full w-4/5">
+  <div class="flex flex-col justify-start gap-8 h-full">
+    <div>
+      <p
+        class="font-ubuntu-bold text-4xl text-center text-primary leading-relaxed"
+      >
+        Select a category!
+      </p>
+    </div>
+    <form class="flex flex-col justify-center gap-8">
+      <div class="flex flex-row items-center gap-4">
+        <button
+          type="button"
+          class="category-button bg-primary rounded-xl w-full h-32 transition"
+          (click)="selectCategory(QuizCategory.History)"
+          [ngClass]="{
+            'bg-selected': categoryControl.value === QuizCategory.History
+          }"
+        >
+          <i class="fa-solid fa-landmark text-theme text-3xl"></i>
+        </button>
+        <button
+          type="button"
+          class="category-button bg-primary rounded-xl w-full h-32 transition"
+          (click)="selectCategory(QuizCategory.Book)"
+          [ngClass]="{
+            'bg-selected': categoryControl.value === QuizCategory.Book
+          }"
+        >
+          <i class="fa-solid fa-book-open text-theme text-3xl"></i>
+        </button>
+      </div>
+      <div class="flex flex-row items-center gap-4">
+        <button
+          type="button"
+          class="category-button bg-primary rounded-xl w-full h-32 transition"
+          (click)="selectCategory(QuizCategory.Art)"
+          [ngClass]="{
+            'bg-selected': categoryControl.value === QuizCategory.Art
+          }"
+        >
+          <i class="fa-solid fa-palette text-theme text-3xl"></i>
+        </button>
+        <button
+          type="button"
+          class="category-button bg-primary rounded-xl w-full h-32 transition"
+          (click)="selectCategory(QuizCategory.Music)"
+          [ngClass]="{
+            'bg-selected': categoryControl.value === QuizCategory.Music
+          }"
+        >
+          <i class="fa-solid fa-music text-theme text-3xl"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  @if (categoryControl.value !== null) {
+  <div class="h-14 w-full mb-10">
+    <button
+      (click)="this.gameSettingsService.nextStep()"
+      class="bg-primary font-ubuntu-bold rounded-xl h-full w-full hover:opacity-50 transition-opacity"
+    >
+      Continue
+    </button>
+  </div>
+  }
+</div>

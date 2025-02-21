@@ -1,0 +1,19 @@
+@media all and (max-width: 320px) {
+  :host {
+    display: flex;
+    justify-content: center;
+  }
+
+  .w-container {
+    width: 90vw;
+  }
+}
+
+button:disabled {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.player-card-container {
+  max-width: 425px;
+}

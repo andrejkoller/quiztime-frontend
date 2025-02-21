@@ -1,0 +1,67 @@
+<div class="flex flex-col justify-center items-center h-screen">
+  @if (this.playerCount === 1) {
+  <div class="mt-10">
+    <p
+      class="font-ubuntu-bold text-2xl text-center text-primary leading-relaxed"
+    >
+      Your Score
+    </p>
+  </div>
+  <div
+    class="flex flex-col justify-center h-full w-full"
+    *ngFor="let player of players"
+  >
+    <span
+      class="flex flex-row justify-center font-ubuntu-bold text-primary text-3xl"
+      >{{ player.score }}</span
+    >
+  </div>
+  } @else {
+  <div class="mt-10">
+    @if (calculateWinner()) {
+    <div class="flex justify-center items-center">
+      <p class="font-ubuntu-bold text-primary text-3xl">
+        {{ calculateWinner() }}
+      </p>
+    </div>
+    }
+  </div>
+  <div class="flex flex-col justify-center gap-4 h-full w-full">
+    <div
+      class="flex justify-between items-center bg-primary rounded-xl pl-2 pr-2 h-24 w-full"
+      *ngFor="let player of players"
+    >
+      <span class="font-ubuntu-bold text-theme text-3xl">
+        {{ player.emoji }}
+      </span>
+      <span class="font-ubuntu-bold text-theme text-3xl">
+        {{ player.name }}
+      </span>
+      <span class="font-ubuntu-bold text-theme text-3xl">
+        {{ player.score }} Pts.
+      </span>
+    </div>
+  </div>
+  }
+  <div class="flex flex-row items-center gap-4 w-full mb-10">
+    <div class="flex justify-center items-end h-full w-full">
+      <button
+        class="font-ubuntu-bold rounded-xl bg-button text-theme h-10 w-full hover:opacity-50 transition-opacity"
+        (click)="goToSettings()"
+      >
+        Restart
+      </button>
+    </div>
+    <div>
+      <p class="text-primary font-ubuntu-bold">or</p>
+    </div>
+    <div class="flex justify-center items-end w-full">
+      <button
+        class="font-ubuntu-bold rounded-xl text-primary border-primary border-2 w-full h-10"
+        (click)="exitGame()"
+      >
+        Quit
+      </button>
+    </div>
+  </div>
+</div>

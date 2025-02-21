@@ -1,0 +1,42 @@
+@if (this.players.length > 0) {
+<div
+  *ngFor="let player of players; let i = index"
+  [ngClass]="{
+    currentPlayerSelected: i === this.playerService.currentPlayerIndex
+  }"
+  class="brightness-50"
+>
+  <div class="flex flex-row justify-between w-full">
+    <span class="font-ubuntu-bold text-3xl text-primary ml-3"
+      >{{ i + 1 }}. Player</span
+    >
+    <span class="font-ubuntu-bold text-3xl text-primary ml-3">{{
+      player.name
+    }}</span>
+  </div>
+  <div class="bg-primary rounded-xl">
+    <div class="flex flex-row justify-center items-start h-full w-full">
+      <div
+        class="flex flex-row justify-between items-center w-full pt-5 pb-5 pr-5 pl-5 h-full"
+      >
+        <div class="flex flex-row justify-center items-center">
+          <i
+            [ngStyle]="{ backgroundColor: player.color }"
+            class="fa-solid fa-user text-theme text-5xl p-8 border border-theme rounded-xl"
+          ></i>
+        </div>
+        <div class="flex flex-col justify-center items-center gap-2">
+          <span class="font-ubuntu-bold text-3xl text-theme">
+            <span *ngFor="let i of getArray(player.lives)">
+              <i class="fa-solid fa-heart"></i>
+            </span>
+          </span>
+          <span class="font-ubuntu-bold text-3xl text-theme">
+            {{ player.score }} Pts.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}

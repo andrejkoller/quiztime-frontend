@@ -1,0 +1,61 @@
+<div class="flex flex-col justify-start gap-8 h-full w-full">
+  <div class="flex flex-col justify-start gap-8 h-full">
+    <div>
+      <p
+        class="font-ubuntu-bold text-4xl text-center text-primary leading-relaxed"
+      >
+        How difficult should it be?
+      </p>
+    </div>
+    <form class="flex flex-col justify-center gap-8">
+      <div class="flex flex-col gap-8 w-full">
+        <div class="flex w-full">
+          <button
+            type="button"
+            class="bg-easy font-ubuntu-bold text-center rounded-xl h-14 w-full transition-opacity"
+            (click)="selectDifficulty(QuizDifficulty.Easy)"
+            [ngClass]="{
+              'opacity-50': difficultyControl.value === QuizDifficulty.Easy
+            }"
+          >
+            Easy
+          </button>
+        </div>
+        <div class="flex w-full">
+          <button
+            type="button"
+            class="bg-medium font-ubuntu-bold text-center rounded-xl h-14 w-full transition-opacity"
+            (click)="selectDifficulty(QuizDifficulty.Medium)"
+            [ngClass]="{
+              'opacity-50': difficultyControl.value === QuizDifficulty.Medium
+            }"
+          >
+            Medium
+          </button>
+        </div>
+        <div class="flex w-full">
+          <button
+            type="button"
+            class="bg-hard font-ubuntu-bold text-center rounded-xl h-14 w-full transition-opacity"
+            (click)="selectDifficulty(QuizDifficulty.Hard)"
+            [ngClass]="{
+              'opacity-50': difficultyControl.value === QuizDifficulty.Hard
+            }"
+          >
+            Hard
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  @if (difficultyControl.value !== null) {
+  <div class="h-14 w-full mb-10">
+    <button
+      (click)="this.gameSettingsService.nextStep()"
+      class="bg-primary font-ubuntu-bold rounded-xl h-full w-full hover:opacity-50 transition-opacity"
+    >
+      Continue
+    </button>
+  </div>
+  }
+</div>

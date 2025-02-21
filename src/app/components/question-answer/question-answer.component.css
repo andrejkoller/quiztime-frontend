@@ -1,0 +1,21 @@
+button:hover {
+  background-color: #40dee8;
+}
+
+.answers-section button.selected {
+  background-color: #40dee8;
+}
+
+.selected-answer {
+  background-color: #40dee8;
+}
+
+.correct-answer {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+.incorrect-answer {
+  background-color: #eb5757;
+  color: #ffffff;
+}
