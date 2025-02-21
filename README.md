@@ -1,40 +1,29 @@
-<div align="left">
-  <h3>ABOUT THIS PROJECT</h3>
-</div>
-<div align="left">
-  <p>
-    This is a quiz application built using Angular and styled with Tailwind CSS.
-  </p>
-  <p>
-    The project demonstrates a dynamic and responsive UI, incorporating modern web technologies to create an engaging user experience. The app fetches quiz questions from an API and allows users to test their knowledge across various topics.
-  </p>
-</div>
 <div align="center">
   <div>
-    <img src="https://github.com/user-attachments/assets/b72ab38f-e1e2-4b93-a313-e9d9f47cd53b">
+    <img src="https://github.com/user-attachments/assets/05dec451-9319-4b74-a78d-49a2ef0cdfc2">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/1d1fc134-f8c7-4720-b81a-ee3901879055">
+    <img src="https://github.com/user-attachments/assets/9ccfe031-e923-4bbf-a552-7792d69de247">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/89e85f48-7b98-4037-b807-c908837865ea">
+    <img src="https://github.com/user-attachments/assets/683cb05f-0ff6-413d-be18-6b4ef1ceac26">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/3d9e6013-775e-457e-b631-145001597c2e">
+    <img src="https://github.com/user-attachments/assets/718d572e-c783-4031-b50e-9745967763eb">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/880f0fbb-b048-4ee1-a7b0-151048d2f4e8">
+    <img src="https://github.com/user-attachments/assets/1eb451a8-8ae9-43f3-9821-afabec432e1d">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/01b95ee2-d16a-4bd8-848c-6b11a5a69695">
+    <img src="https://github.com/user-attachments/assets/e78b50df-95ab-4d1b-9fe1-bb51bcd14456">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/7d0f9faf-a47d-484b-9843-fe701723d163">
+    <img src="https://github.com/user-attachments/assets/86eea30a-b59b-47b9-86c5-aa00e21fe287">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/e5fe8c6b-d6d7-49dc-853b-af6736c3b76d">
+    <img src="https://github.com/user-attachments/assets/51f9d1fd-b12c-409a-9bea-280dcb6581e6">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/739902ca-b09b-4ecb-94ad-83f606644859">
+    <img src="https://github.com/user-attachments/assets/375b882d-8387-4f36-9f0f-d8e184c18cc5">
   </div>
 </div>
