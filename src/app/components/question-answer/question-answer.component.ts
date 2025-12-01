@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../services/quiz.service';
 import { NgClass, NgFor, NgForOf, NgIf } from '@angular/common';
 import { GameSettingsService } from '../../services/game-settings.service';
@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 import { catchError, map, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { PlayerService } from '../../services/player.service';
-import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-question-answer',

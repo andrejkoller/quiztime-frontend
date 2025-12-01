@@ -17,12 +17,7 @@ import { QuizCategory, QuizDifficulty } from '../../models/quiz.model';
   selector: 'app-game-settings',
   standalone: true,
   imports: [
-    MatCard,
-    MatCardContent,
-    RouterLink,
     NgIf,
-    NgFor,
-    NgForOf,
     FormsModule,
     PlayerCountComponent,
     DifficultySelectionComponent,

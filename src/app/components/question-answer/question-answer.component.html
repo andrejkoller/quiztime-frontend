@@ -4,20 +4,21 @@
     <p class="text-primary text-center text-xl font-ubuntu-bold">
       Loading questions...
     </p>
-    }
-    <div *ngIf="this.questions.length > 0" class="flex flex-col gap-4">
-      <div *ngIf="questions[currentQuestionIndex]">
-        <p class="text-accent text-center">
-          Question {{ this.currentQuestionIndex }} out of
-          {{ this.questions.length }}
-        </p>
-      </div>
+    } @if (this.questions.length > 0) {
+    <div class="flex flex-col gap-4">
+      @if (questions[currentQuestionIndex]) {
+      <p class="text-accent text-center">
+        Question {{ this.currentQuestionIndex }} out of
+        {{ this.questions.length }}
+      </p>
+      }
       <p
         class="text-primary text-center font-ubuntu-bold text-2xl"
         [innerHTML]="this.questions[this.currentQuestionIndex]?.question"
       ></p>
     </div>
-    <div class="answer-section flex flex-col gap-4 justify-end w-full">
+    }
+    <div class="flex flex-col gap-4">
       <button
         *ngFor="
           let answer of this.questions[this.currentQuestionIndex]?.answers
@@ -28,16 +29,20 @@
           'incorrect-answer': selectedAnswer === answer && isCorrect === false
         }"
         (click)="selectAnswer(answer)"
-        class="answers focus:bg-button font-ubuntu-bold bg-primary rounded-xl text-center h-14 w-full transition"
+        class="answers focus:bg-button font-ubuntu-bold bg-primary rounded-xl h-14 w-full transition"
       >
         {{ answer }}
       </button>
     </div>
   </div>
-  <div class="flex flex-row justify-center items-end mt-10 mb-10 h-full w-full">
+  <div class="flex justify-center items-end mt-10 mb-10 h-full w-full">
     <button
       [disabled]="!selectedAnswer"
       class="bg-button border border-button font-ubuntu-bold rounded-xl w-full h-14 transition-opacity"
+      [ngClass]="{
+        'opacity-50': !selectedAnswer,
+        'opacity-100': selectedAnswer
+      }"
       (click)="goToNextQuestion()"
     >
       Next

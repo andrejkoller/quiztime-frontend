@@ -6,7 +6,7 @@
   }"
   class="brightness-50"
 >
-  <div class="flex flex-row justify-between w-full">
+  <div class="flex justify-between w-full">
     <span class="font-ubuntu-bold text-3xl text-primary ml-3"
       >{{ i + 1 }}. Player</span
     >
@@ -15,11 +15,9 @@
     }}</span>
   </div>
   <div class="bg-primary rounded-xl">
-    <div class="flex flex-row justify-center items-start h-full w-full">
-      <div
-        class="flex flex-row justify-between items-center w-full pt-5 pb-5 pr-5 pl-5 h-full"
-      >
-        <div class="flex flex-row justify-center items-center">
+    <div class="flex justify-center items-start h-full w-full">
+      <div class="flex justify-between items-center w-full p-5 h-full">
+        <div class="flex justify-center items-center">
           <i
             [ngStyle]="{ backgroundColor: player.color }"
             class="fa-solid fa-user text-theme text-5xl p-8 border border-theme rounded-xl"

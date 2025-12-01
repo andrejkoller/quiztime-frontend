@@ -8,9 +8,8 @@ describe('RoundsCountComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RoundsCountComponent]
-    })
-    .compileComponents();
+      imports: [RoundsCountComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RoundsCountComponent);
     component = fixture.componentInstance;

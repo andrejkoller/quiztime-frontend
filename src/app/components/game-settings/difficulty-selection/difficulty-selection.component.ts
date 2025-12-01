@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatCard, MatCardContent } from '@angular/material/card';
 import { QuizDifficulty } from '../../../models/quiz.model';
 import { NgClass } from '@angular/common';
 import { GameSettingsService } from '../../../services/game-settings.service';
@@ -9,7 +8,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-difficulty-selection',
   standalone: true,
-  imports: [MatCard, MatCardContent, NgClass],
+  imports: [NgClass],
   templateUrl: './difficulty-selection.component.html',
   styleUrl: './difficulty-selection.component.css',
 })

@@ -8,9 +8,8 @@ describe('PodiumComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PodiumComponent]
-    })
-    .compileComponents();
+      imports: [PodiumComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PodiumComponent);
     component = fixture.componentInstance;

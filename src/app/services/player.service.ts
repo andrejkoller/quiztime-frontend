@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Player } from '../models/player.model';
-import { GameSettingsService } from './game-settings.service';
 
 @Injectable({
   providedIn: 'root',
