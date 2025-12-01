@@ -5,7 +5,7 @@ import { HomeComponent } from '../home/home.component';
 import { GameSettingsComponent } from '../game-settings/game-settings.component';
 import { PlaygroundComponent } from '../playground/playground.component';
 import { PodiumComponent } from '../podium/podium.component';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -18,7 +18,6 @@ import { NgIf } from '@angular/common';
     GameSettingsComponent,
     PlaygroundComponent,
     PodiumComponent,
-    RouterLink,
     NgIf,
   ],
   templateUrl: './quiz.component.html',

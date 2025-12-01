@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../services/quiz.service';
-import { NgClass, NgFor, NgForOf, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgForOf } from '@angular/common';
 import { GameSettingsService } from '../../services/game-settings.service';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, map, of } from 'rxjs';
@@ -10,7 +10,7 @@ import { PlayerService } from '../../services/player.service';
 @Component({
   selector: 'app-question-answer',
   standalone: true,
-  imports: [NgIf, NgFor, NgForOf, NgClass],
+  imports: [NgFor, NgForOf, NgClass],
   templateUrl: './question-answer.component.html',
   styleUrl: './question-answer.component.css',
 })

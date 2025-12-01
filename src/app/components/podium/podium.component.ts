@@ -44,6 +44,8 @@ export class PodiumComponent implements OnInit {
     this.playerCount = this.gameSettingsService.getPlayerCapacity();
     this.players = this.playerService.getPlayers();
 
+    this.players.sort((a, b) => b.score - a.score);
+
     for (let i = 0; i < this.playerCount; i++) {
       this.players[i].placement = i + 1;
 
@@ -61,8 +63,6 @@ export class PodiumComponent implements OnInit {
           this.players[i].emoji = '👎';
           break;
       }
-
-      this.players.sort((a, b) => b.score - a.score);
     }
   }
 
