@@ -1,15 +1,10 @@
 <div class="flex flex-col justify-center items-center h-full w-72">
-  <div class="flex flex-col justify-start gap-8 h-full w-full">
-    <div>
-      <p
-        class="font-ubuntu-bold text-4xl text-center text-primary leading-relaxed"
-      >
-        Set a number of rounds!
-      </p>
-    </div>
-    <form>
-      <div class="flex flex-row justify-center items-center w-full">
-        <div class="flex flex-row items-center gap-4">
+  <div class="flex flex-col gap-8 h-full w-full">
+    <p class="font-ubuntu-bold text-4xl text-center text-primary leading-relaxed">
+      Set a number of rounds!
+    </p>
+    <form class="flex justify-center">
+      <div class="flex items-center gap-4">
           <div>
             <input
               id="questionCapacity"
@@ -34,16 +29,13 @@
               <i class="fa-solid fa-caret-down"></i>
             </button>
           </div>
-        </div>
       </div>
     </form>
   </div>
-  <div class="h-14 w-full mb-10">
-    <button
-      (click)="this.gameSettingsService.nextStep()"
-      class="bg-primary font-ubuntu-bold rounded-xl h-full w-full hover:opacity-50 transition-opacity"
-    >
-      Continue
-    </button>
-  </div>
+  <button
+    (click)="this.gameSettingsService.nextStep()"
+    class="bg-primary font-ubuntu-bold rounded-xl hover:opacity-50 transition-opacity h-14 w-full mb-10"
+  >
+    Continue
+  </button>
 </div>

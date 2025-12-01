@@ -1,13 +1,9 @@
 <div class="flex flex-col justify-start h-full w-72">
-  <div class="flex flex-col justify-start gap-8 h-full">
-    <div>
-      <p
-        class="font-ubuntu-bold text-4xl text-center text-primary leading-relaxed"
-      >
-        Select a category!
-      </p>
-    </div>
-    <form class="flex flex-col justify-center gap-8">
+  <div class="flex flex-col gap-8 h-full">
+    <p class="font-ubuntu-bold text-4xl text-center text-primary leading-relaxed">
+      Select a category!
+    </p>
+    <form class="flex flex-col gap-8">
       <div class="flex flex-row items-center gap-4">
         <button
           type="button"
@@ -54,17 +50,15 @@
       </div>
     </form>
   </div>
-  <div class="h-14 w-full mb-10">
-    <button
-      (click)="this.gameSettingsService.nextStep()"
-      [disabled]="categoryControl.value === null"
-      class="bg-primary font-ubuntu-bold rounded-xl h-full w-full hover:opacity-50 transition-opacity"
-      [ngClass]="{
-        'opacity-50': categoryControl.value === null,
-        'opacity-100': categoryControl.value !== null
-      }"
-    >
-      Continue
-    </button>
-  </div>
+  <button
+    (click)="this.gameSettingsService.nextStep()"
+    [disabled]="categoryControl.value === null"
+    class="bg-primary font-ubuntu-bold rounded-xl hover:opacity-50 transition-opacity h-14 w-full mb-10"
+    [ngClass]="{
+      'opacity-50': categoryControl.value === null,
+      'opacity-100': categoryControl.value !== null
+    }"
+  >
+    Continue
+  </button>
 </div>
