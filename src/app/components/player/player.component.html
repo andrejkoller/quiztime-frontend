@@ -6,33 +6,24 @@
   }"
   class="brightness-50"
 >
-  <div class="flex justify-between w-full">
-    <span class="font-ubuntu-bold text-3xl text-primary ml-3"
-      >{{ i + 1 }}. Player</span
-    >
-    <span class="font-ubuntu-bold text-3xl text-primary ml-3">{{
-      player.name
-    }}</span>
-  </div>
   <div class="bg-primary rounded-xl">
-    <div class="flex justify-center items-start h-full w-full">
-      <div class="flex justify-between items-center w-full p-5 h-full">
-        <div class="flex justify-center items-center">
-          <i
-            [ngStyle]="{ backgroundColor: player.color }"
-            class="fa-solid fa-user text-theme text-5xl p-8 border border-theme rounded-xl"
-          ></i>
+    <div class="flex justify-between items-center h-full w-full p-8">
+      <div class="flex justify-between items-center h-full">
+        <div class="flex flex-col justify-center items-center">
+          <span class="font-ubuntu-bold text-3xl text-theme">{{
+            player.name
+          }}</span>
         </div>
-        <div class="flex flex-col justify-center items-center gap-2">
-          <span class="font-ubuntu-bold text-3xl text-theme">
-            <span *ngFor="let i of getArray(player.lives)">
-              <i class="fa-solid fa-heart"></i>
-            </span>
+      </div>
+      <div class="flex flex-col justify-center items-center gap-2">
+        <span class="font-ubuntu-bold text-3xl text-theme">
+          <span *ngFor="let i of getArray(player.lives)">
+            <i class="fa-solid fa-heart"></i>
           </span>
-          <span class="font-ubuntu-bold text-3xl text-theme">
-            {{ player.score }} Pts.
-          </span>
-        </div>
+        </span>
+        <span class="font-ubuntu-bold text-3xl text-theme">
+          {{ player.score }} Pts.
+        </span>
       </div>
     </div>
   </div>

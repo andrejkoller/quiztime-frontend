@@ -1,15 +1,25 @@
-<div class="flex flex-col h-full w-container">
+<div class="flex flex-col h-full w-full">
   <div class="flex items-start justify-between mt-16 mb-4 h-full">
     <div
       class="cursor-pointer border border-white px-2 py-0.5 bg-white rounded-xl hover:opacity-50"
     >
+      @if (isPlaygroundRoute()) {
+      <i
+        class="fa-solid fa-circle-user text-theme text-2xl"
+        (click)="goToPlayers()"
+      ></i>
+      } @else {
       <i
         class="fa-solid fa-arrow-left text-theme text-2xl"
-        (click)="goBackToHome()"
+        (click)="goBack()"
       ></i>
+      }
     </div>
     <div class="flex items-center justify-between w-full">
       <div class="flex justify-center w-full">
+        @if (isPlayersRoute()) {
+        <p class="text-primary font-ubuntu-bold uppercase">Players</p>
+        } @else {
         @switch (this.quizCategory) { @case (9) {
         <p class="text-primary font-ubuntu-bold uppercase">General</p>
         } @case (23) {
@@ -21,6 +31,7 @@
         } @case (10) {
         <p class="text-primary font-ubuntu-bold uppercase">Books</p>
         } }
+        }
       </div>
       <div
         class="cursor-pointer border border-white px-2 py-0.5 bg-white rounded-xl hover:opacity-50"

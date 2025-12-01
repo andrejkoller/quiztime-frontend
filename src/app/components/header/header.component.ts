@@ -24,6 +24,26 @@ export class HeaderComponent {
     this.router.navigate(['/']);
   }
 
+  goBack() {
+    if (this.isPlayersRoute()) {
+      this.router.navigate(['/playground']);
+    } else {
+      this.goBackToHome();
+    }
+  }
+
+  isPlaygroundRoute(): boolean {
+    return this.router.url === '/playground';
+  }
+
+  isPlayersRoute(): boolean {
+    return this.router.url === '/players';
+  }
+
+  goToPlayers() {
+    this.router.navigate(['/players']);
+  }
+
   exitGame() {
     this.router.navigate(['/']).then(() => {
       window.location.reload();
