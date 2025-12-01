@@ -1,5 +1,5 @@
 {
-  "name": "quiz-angular",
+  "name": "quiztime-frontend",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:quiz-angular": "node dist/quiz-angular/server/server.mjs"
+    "serve:ssr:quiztime-frontend": "node dist/quiztime-frontend/server/server.mjs"
   },
   "private": true,
   "dependencies": {
