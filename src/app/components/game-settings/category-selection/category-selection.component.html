@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-start h-full w-4/5">
+<div class="flex flex-col justify-start h-full w-72">
   <div class="flex flex-col justify-start gap-8 h-full">
     <div>
       <p
@@ -54,14 +54,17 @@
       </div>
     </form>
   </div>
-  @if (categoryControl.value !== null) {
   <div class="h-14 w-full mb-10">
     <button
       (click)="this.gameSettingsService.nextStep()"
+      [disabled]="categoryControl.value === null"
       class="bg-primary font-ubuntu-bold rounded-xl h-full w-full hover:opacity-50 transition-opacity"
+      [ngClass]="{
+        'opacity-50': categoryControl.value === null,
+        'opacity-100': categoryControl.value !== null
+      }"
     >
       Continue
     </button>
   </div>
-  }
 </div>

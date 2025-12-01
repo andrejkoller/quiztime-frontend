@@ -23,7 +23,6 @@ export class PlayerComponent implements OnInit {
 
   fetchPlayers() {
     this.players = this.playerService.getPlayers();
-    console.log(this.players);
   }
 
   getArray(count: number): number[] {
