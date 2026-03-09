@@ -4,28 +4,28 @@ A multiplayer quiz game built with Angular 18, featuring real-time gameplay, cus
 
 ## ✨ Features
 
-- **Multiplayer Support:** Play with multiple players (customizable player count)
-- **Customizable Quiz Settings:**
+- Multiplayer Support: Play with multiple players (customizable player count)
+- Customizable Quiz Settings:
   - Multiple categories (General Knowledge, History, Art, Music, Books)
   - Three difficulty levels (Easy, Medium, Hard)
   - Configurable rounds and player lives
-- **Interactive Gameplay:**
+- Interactive Gameplay:
   - Real-time question answering
   - Score tracking and leaderboard
   - Player elimination based on lives
   - Winner podium display
-- **Modern UI:** Built with Angular Material and Tailwind CSS
-- **Responsive Design:** Works seamlessly across different screen sizes
-- **Server-Side Rendering:** Optimized performance with Angular SSR
+- Modern UI: Built with Angular Material and Tailwind CSS
+- Responsive Design: Works seamlessly across different screen sizes
+- Server-Side Rendering: Optimized performance with Angular SSR
 
 ## 🛠️ Technologies Used
 
-- **Framework:** Angular 18.1.0
-- **UI Components:** Angular Material 18.2.6
-- **Styling:** Tailwind CSS 3.4.13
-- **Animations:** Angular Animations
-- **Notifications:** ngx-toastr 19.0.0
-- **Server:** Express.js (for SSR)
+- Framework: Angular 18.1.0
+- UI Components: Angular Material 18.2.6
+- Styling: Tailwind CSS 3.4.13
+- Animations: Angular Animations
+- Notifications: ngx-toastr 19.0.0
+- Server: Express.js (for SSR)
 
 ## 📋 Prerequisites
 
@@ -56,9 +56,10 @@ npm install
 npm start
 ```
 
-4. Navigate to `http://localhost:4200/`. The application will automatically reload when you make changes to the source files.
+4. Navigate to `http://localhost:4200`. The application will automatically reload when you make changes to the source files.
 
 ## 📸 Screenshots
+
 <img width="1920" height="1080" alt="Screenshot 1" src="https://github.com/user-attachments/assets/69448793-4660-4c08-9696-33bffe0d51e0" />
 <img width="1920" height="1080" alt="Screenshot 2" src="https://github.com/user-attachments/assets/3ec05df5-2066-440d-875e-726349ae74de" />
 <img width="1920" height="1080" alt="Screenshot 3" src="https://github.com/user-attachments/assets/63dce6b5-c151-4772-b701-6661051338a2" />
