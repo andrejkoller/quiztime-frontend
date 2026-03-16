@@ -1,24 +1,17 @@
 <div class="flex flex-col items-center justify-between gap-4 h-screen">
   <div class="flex flex-col gap-4 mt-24">
-    <div class="flex">
-      <p class="text-6xl brand-name text-primary font-ubuntu-bold">Quiz</p>
-      <p class="text-6xl brand-name text-primary font-ubuntu-bold">time</p>
-    </div>
-    <p class="text-center text-accent">
-      Multiple quizes to challenge you and<br />
-      your friends on various topics!
+    <p class="text-5xl text-center">Quiztime</p>
+    <p class="text-lg text-center">
+      Multiple choice quizzes for everyone.<br />
+      Create your own quizzes and challenge your friends!
     </p>
   </div>
-  <div class="flex justify-center w-full mb-10">
+  <div class="flex justify-center w-full mb-24">
     <button
-      class="bg-button font-ubuntu-bold rounded-xl w-3/5 h-10 hover:opacity-50 transition-opacity"
-      (click)="goToSettings()"
+      class="rounded-full w-9/12 h-10 transition-all bg-button text-button-text hover:bg-button-hover"
+      (click)="navigateToSettings()"
     >
-      Start playing
+      Let's play!
     </button>
   </div>
 </div>
-<div class="h-24 w-24 rounded-full absolute bg-dark-blue ball-one"></div>
-<div class="h-36 w-36 rounded-xl absolute bg-medium-blue square-one"></div>
-<div class="h-36 w-36 rounded-xl absolute bg-accent square-two"></div>
-<div class="h-24 w-24 rounded-full absolute bg-dark-blue ball-two"></div>

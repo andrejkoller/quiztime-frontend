@@ -1,20 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
-
-  goToSettings() {
+  navigateToSettings() {
     this.router.navigate(['/settings']);
   }
 }
