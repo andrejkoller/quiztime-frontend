@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameSettingsService } from '../../services/game-settings.service';
+import { SettingsService } from '../../services/settings.service';
 import { QuizCategory } from '../../models/quiz.model';
 
 @Component({
@@ -15,9 +15,9 @@ export class HeaderComponent {
 
   constructor(
     private router: Router,
-    private gameSettingsService: GameSettingsService
+    private settingsService: SettingsService,
   ) {
-    this.quizCategory = this.gameSettingsService.getQuizCategory();
+    this.quizCategory = this.settingsService.getQuizCategory();
   }
 
   goBackToHome() {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../services/quiz.service';
 import { NgClass, NgFor, NgForOf } from '@angular/common';
-import { GameSettingsService } from '../../services/game-settings.service';
+import { SettingsService } from '../../services/settings.service';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, map, of } from 'rxjs';
 import { Router } from '@angular/router';
@@ -26,10 +26,10 @@ export class QuestionAnswerComponent implements OnInit {
 
   constructor(
     protected quizService: QuizService,
-    protected gameSettingsService: GameSettingsService,
+    protected settingsService: SettingsService,
     protected playerService: PlayerService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -37,9 +37,9 @@ export class QuestionAnswerComponent implements OnInit {
   }
 
   fetchQuestions() {
-    const category = this.gameSettingsService.getQuizCategory();
-    const difficulty = this.gameSettingsService.getQuizDifficulty();
-    const amount = this.gameSettingsService.getQuestionCapacity();
+    const category = this.settingsService.getQuizCategory();
+    const difficulty = this.settingsService.getQuizDifficulty();
+    const amount = this.settingsService.getQuestionCapacity();
 
     this.quizService
       .getQuestions(category, difficulty, amount)
@@ -49,7 +49,7 @@ export class QuestionAnswerComponent implements OnInit {
           const errorMessage = 'Could not load quiz. Please try again later.';
           this.toastr.error(errorMessage);
           return of([]);
-        })
+        }),
       )
       .subscribe((results: any[]) => {
         this.questions = results.map((q: any) => ({
@@ -76,12 +76,12 @@ export class QuestionAnswerComponent implements OnInit {
     if (this.selectedAnswer === this.currentQuestion.correctAnswer) {
       this.isCorrect = true;
       this.playerService.addPointToPlayer(
-        this.playerService.currentPlayerIndex
+        this.playerService.currentPlayerIndex,
       );
     } else {
       this.isCorrect = false;
       this.playerService.subtractLifeFromPlayer(
-        this.playerService.currentPlayerIndex
+        this.playerService.currentPlayerIndex,
       );
     }
 
