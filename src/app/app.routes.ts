@@ -1,20 +1,18 @@
 import { Routes } from '@angular/router';
-import { PlaygroundComponent } from './pages/playground/playground.component';
-import { SettingsComponent } from './pages/settings/settings.component';
-import { PodiumComponent } from './pages/podium/podium.component';
-import { PlayersTableComponent } from './components/players-table/players-table.component';
-import { HomeComponent } from './pages/home/home.component';
+import { Playground } from './pages/playground/playground';
+import { Settings } from './pages/settings/settings';
+import { Podium } from './pages/podium/podium';
+import { Home } from './pages/home/home';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: Home,
   },
   {
     path: 'settings',
-    component: SettingsComponent,
+    component: Settings,
   },
-  { path: 'playground', component: PlaygroundComponent },
-  { path: 'players', component: PlayersTableComponent },
-  { path: 'podium', component: PodiumComponent },
+  { path: 'playground', component: Playground },
+  { path: 'podium', component: Podium },
 ];

@@ -1,0 +1,7 @@
+<div class="flex-1">
+  @if (this.settingsService.stepIndex === 0) {
+    <app-category-selection></app-category-selection>
+  } @else if (this.settingsService.stepIndex === 1) {
+    <app-difficulty-selection></app-difficulty-selection>
+  }
+</div>
