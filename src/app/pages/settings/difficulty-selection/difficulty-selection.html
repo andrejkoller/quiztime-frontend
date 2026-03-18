@@ -1,0 +1,29 @@
+<div class="flex flex-col gap-8">
+  <div class="flex flex-col items-center gap-8">
+    @if (this.category) {
+      <h1 class="text-[2rem] text-center">
+        {{ this.categoryNames[this.category] }}
+      </h1>
+      <lucide-icon
+        [name]="this.categoryIcons[this.category]"
+        class="w-12 h-12"
+      ></lucide-icon>
+    }
+  </div>
+  <div class="flex flex-col items-start justify-start gap-4">
+    <p class="text-base text-left text-muted-text">
+      Choose your difficulty level
+    </p>
+    <form class="flex flex-col gap-4 w-full">
+      @for (difficulty of difficulties; track $index) {
+        <button
+          type="button"
+          class="rounded-full w-full h-12 mx-auto border border-border"
+          (click)="selectDifficulty(difficulty)"
+        >
+          {{ difficultyNames[difficulty] }}
+        </button>
+      }
+    </form>
+  </div>
+</div>

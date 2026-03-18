@@ -1,0 +1,21 @@
+<div class="flex flex-col items-start justify-start gap-8 h-[calc(100vh-80px)]">
+  <p class="text-base text-left w-full">
+    Hey Player, what category<br />
+    would you like to play today?
+  </p>
+  <form class="grid grid-cols-3 gap-8 w-full">
+    @for (category of categories; track $index) {
+      <button
+        type="button"
+        class="flex flex-col items-center justify-center gap-1 w-full"
+        (click)="selectCategory(category)"
+      >
+        <lucide-icon
+          [name]="categoryIcons[category]"
+          class="w-6 h-6"
+        ></lucide-icon>
+        {{ categoryNames[category] }}
+      </button>
+    }
+  </form>
+</div>
